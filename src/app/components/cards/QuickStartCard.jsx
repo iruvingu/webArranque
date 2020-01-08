@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme => ({
     },
     card: {
         width: 270,
-        height: "auto",
+        height: "unset",
         border: "solid 1px #e0dede"
     },
     title: {
@@ -43,12 +43,15 @@ const useStyles = makeStyles(theme => ({
     margin: {
         padding: theme.spacing(1),
     },
-    cardBannerTitle: {
+    cardTitle: {
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
         padding: '2px',
         textAlign: 'center'
     },
+    cardContent: {
+        padding: '5px',
+    }
 }))
 
 function QuickStartCard(props) {
@@ -95,9 +98,10 @@ function QuickStartCard(props) {
         <div className={classes.root}>
             <Card className={classes.card}>
                 <CardHeader
-                    className={classes.cardBannerTitle}
+                    className={classes.cardTitle}
                     title={<Typography variant='subtitle1'>{title}</Typography>} />
-                <CardContent>
+                <CardContent
+                    className={classes.cardContent}>
                     <Grid container>
                     <Grid item xs={12} sm={6}>
                         <CardSubContent id color={""} value={meta} nameValue={"Meta"} />

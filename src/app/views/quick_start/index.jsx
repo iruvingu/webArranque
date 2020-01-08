@@ -24,7 +24,7 @@ import classNames from "classnames";
 const tileData = [
     {
       id: 1,
-      title: "Titulo1",
+      title: "CUBETA 0-14",
       meta: "$9,390,016",
       proyection: "$5,323,103",
       percentProy: "56.7%",
@@ -34,7 +34,7 @@ const tileData = [
     },
     {
       id: 2,
-      title: "Titulo1",
+      title: "CUBETA 15-29",
       meta: "$9,390,016",
       proyection: "$5,323,103",
       percentProy: "56.7%",
@@ -44,7 +44,7 @@ const tileData = [
     },
     {
       id: 3,
-      title: "Titulo1",
+      title: "RESOLUCIÓN 15-29",
       meta: "$9,390,016",
       proyection: "$5,323,103",
       percentProy: "56.7%",
@@ -54,14 +54,24 @@ const tileData = [
     },
     {
       id: 4,
-      title: "Titulo1",
+      title: "CUBETA 30-59",
       meta: "$9,390,016",
       proyection: "$5,323,103",
       percentProy: "56.7%",
       difference: "$456,789",
       dailyDifference: "$203,456",
       factor: "-239.0%"
-    }
+    },
+    {
+        id: 5,
+        title: "EPRC",
+        meta: "$9,390,016",
+        proyection: "$5,323,103",
+        percentProy: "56.7%",
+        difference: "$456,789",
+        dailyDifference: "$203,456",
+        factor: "-239.0%"
+      }
   ];
 
 const useStyles = makeStyles(theme => ({
@@ -104,7 +114,7 @@ const useStyles = makeStyles(theme => ({
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         overflow: 'hidden',
-        height: 310
+        height: 'unset'
     },
     gridList: {
         flexWrap: 'nowrap',
@@ -226,11 +236,11 @@ function QuickStart(){
             <div className={classes.cardsHeader}>
                 Banner
             </div>
-            <div>
                 <div className={classes.singleLineGrid}>
                 <GridList className={classes.gridList} cols={2.5}>
                     {tileData.map(tile => (
                             <QuickStartCard
+                            
                             id={tile.id}
                             title={tile.title}
                             meta={tile.meta}
@@ -242,7 +252,6 @@ function QuickStart(){
                     ))}
                     </GridList>
                 </div>
-            </div>
             <div className={classes.cardsHeader}>
                 Colocación
             </div>
