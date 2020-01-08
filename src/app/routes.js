@@ -61,7 +61,7 @@ const routes = [
         icon: "settings",
         component: PageSettings,
         layout: "/admin",
-        enable: true
+        enable: false
     },
 ]
 
