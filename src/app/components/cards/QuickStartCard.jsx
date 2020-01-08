@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, Paper, Card, TextField } from '@material-ui/core'
+import { Grid, Typography, Paper, Card, CardHeader, CardContent, TextField } from '@material-ui/core'
 import InputAdornment from '@material-ui/core/InputAdornment';
 import { makeStyles } from "@material-ui/core/styles";
 import Spinner from '../spinner/Spinner'
@@ -10,8 +10,7 @@ const useStyles = makeStyles(theme => ({
     },
     card: {
         width: 270,
-        height: 270,
-        padding: theme.spacing(1),
+        height: "auto",
         border: "solid 1px #e0dede"
     },
     title: {
@@ -43,7 +42,13 @@ const useStyles = makeStyles(theme => ({
     },
     margin: {
         padding: theme.spacing(1),
-    }
+    },
+    cardBannerTitle: {
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.primary.contrastText,
+        padding: '2px',
+        textAlign: 'center'
+    },
 }))
 
 function QuickStartCard(props) {
@@ -88,13 +93,12 @@ function QuickStartCard(props) {
 
     return(
         <div className={classes.root}>
-            <Paper className={classes.card}>
-                <Grid container>
-                    <Grid item xs={12} className={classes.title}>
-                        <div className={classes.titleText}>
-                            {title}
-                        </div>
-                    </Grid>
+            <Card className={classes.card}>
+                <CardHeader
+                    className={classes.cardBannerTitle}
+                    title={<Typography variant='subtitle1'>{title}</Typography>} />
+                <CardContent>
+                    <Grid container>
                     <Grid item xs={12} sm={6}>
                         <CardSubContent id color={""} value={meta} nameValue={"Meta"} />
                     </Grid>
@@ -114,7 +118,9 @@ function QuickStartCard(props) {
                         <CardSubContent id color={"red"} value={factor} nameValue={"Factor"} />
                     </Grid>
                 </Grid>
-            </Paper>
+                </CardContent>
+                
+            </Card>
         </div>
     )
 }

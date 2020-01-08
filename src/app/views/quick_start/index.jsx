@@ -16,56 +16,10 @@ import SwipeableViews from 'react-swipeable-views';
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 
+
 // components
 import QuickStartCard from '../../components/cards/QuickStartCard'
-
-const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1
-    },
-    bannerPaper: {
-        padding: theme.spacing(1),
-        textAlign: 'center',
-        backgroundColor: theme.palette.secondary.light
-    },
-    grid: {
-        padding: theme.spacing(2),
-    },
-    redColor: {
-        color: theme.palette.error.main
-    },
-    bannerCard: {
-        width: "100%"
-    },
-    cardBannerTitle: {
-        backgroundColor: theme.palette.primary.main,
-        color: theme.palette.primary.contrastText,
-    },
-    cardBannerContent: {
-        backgroundColor: theme.palette.secondary.light,
-        color: theme.palette.primary.main,
-    },
-    text: {
-        fontFamily: 'Roboto-Medium',
-        fontSize: '14px'
-    },
-    formControl: {
-        margin: theme.spacing(1),
-        minWidth: 140,
-    },
-    singleLineGrid: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-        overflow: 'hidden',
-        height: 310
-    },
-    gridList: {
-        flexWrap: 'nowrap',
-        // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
-        transform: 'translateZ(0)',
-    },
-}))
+import classNames from "classnames";
 
 const tileData = [
     {
@@ -110,6 +64,74 @@ const tileData = [
     }
   ];
 
+const useStyles = makeStyles(theme => ({
+    root: {
+        flexGrow: 1
+    },
+    bannerPaper: {
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        backgroundColor: theme.palette.secondary.light
+    },
+    grid: {
+        padding: theme.spacing(2),
+    },
+    redColor: {
+        color: theme.palette.error.main
+    },
+    bannerCard: {
+        width: "100%"
+    },
+    cardBannerTitle: {
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.primary.contrastText,
+        padding: '2px'
+    },
+    cardBannerContent: {
+        backgroundColor: theme.palette.secondary.light,
+        color: theme.palette.primary.main,
+    },
+    text: {
+        fontFamily: 'Roboto-Medium',
+        fontSize: '14px'
+    },
+    formControl: {
+        margin: theme.spacing(1),
+        minWidth: 140,
+    },
+    singleLineGrid: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+        overflow: 'hidden',
+        height: 310
+    },
+    gridList: {
+        flexWrap: 'nowrap',
+        // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+        transform: 'translateZ(0)',
+    },
+    gridListTile: {
+        width: "45%",
+        height: "unset",
+    },
+    cardsHeader: {
+        width: '58px',
+        height: '24px',
+        fontFamily: 'Roboto',
+        fontSize: '18px',
+        fontWeight: 'bold',
+        fontStretch: 'normal',
+        fontStyle: 'normal',
+        lineHeight: '1.33',
+        letterSpacing: 'normal',
+        color: theme.palette.primary.main,
+        margin: theme.spacing(1)
+    }
+}))
+
+
+
 function QuickStart(){
 
     const classes = useStyles()
@@ -147,7 +169,7 @@ function QuickStart(){
                             <Card className={classes.bannerCard}>
                                 <CardHeader
                                     className={classes.cardBannerTitle}
-                                    title={<Typography variant='subtitle1'>Antigüedad: ${bannerCardTitle1}</Typography>} />
+                                    title={<Typography variant='subtitle1'>Antigüedad: {bannerCardTitle1}</Typography>} />
                                 <CardContent
                                     className={classes.cardBannerContent}>
                                     <Typography variant='button'>COLOCACIÓN: 80%</Typography>
@@ -158,7 +180,7 @@ function QuickStart(){
                             <Card className={classes.bannerCard}>
                             <CardHeader
                                     className={classes.cardBannerTitle}
-                                    title={<Typography variant='subtitle1'>Días Hábiles: ${bannerCardTitle2}</Typography>} />
+                                    title={<Typography variant='subtitle1'>Días Hábiles: {bannerCardTitle2}</Typography>} />
                                 <CardContent
                                     className={classes.cardBannerContent}>
                                     <Typography variant='button'>eprc: 80%</Typography>
@@ -169,7 +191,7 @@ function QuickStart(){
                             <Card className={classes.bannerCard}>
                             <CardHeader
                                     className={classes.cardBannerTitle}
-                                    title={<Typography variant='subtitle1'>Días transcurridos: ${bannerCardTitle3}</Typography>} />
+                                    title={<Typography variant='subtitle1'>Días transcurridos: {bannerCardTitle3}</Typography>} />
                                 <CardContent
                                     className={classes.cardBannerContent}>
                                     <Typography variant='button'>%cálidad: 80%</Typography>
@@ -201,29 +223,27 @@ function QuickStart(){
                     </Select>
                 </FormControl>
             </div>
-            <div>
+            <div className={classes.cardsHeader}>
                 Banner
             </div>
             <div>
                 <div className={classes.singleLineGrid}>
                 <GridList className={classes.gridList} cols={2.5}>
                     {tileData.map(tile => (
-                        <QuickStartCard
-                        id={tile.id}
-                        title={tile.title}
-                        meta={tile.meta}
-                        proyection={tile.proyection}
-                        percentProy={tile.percentProy}
-                        difference={tile.difference}
-                        dailyDifference={tile.dailyDifference}
-                        factor={tile.factor}
-                    />
-                        
+                            <QuickStartCard
+                            id={tile.id}
+                            title={tile.title}
+                            meta={tile.meta}
+                            proyection={tile.proyection}
+                            percentProy={tile.percentProy}
+                            difference={tile.difference}
+                            dailyDifference={tile.dailyDifference}
+                            factor={tile.factor} />         
                     ))}
                     </GridList>
                 </div>
             </div>
-            <div>
+            <div className={classes.cardsHeader}>
                 Colocación
             </div>
             <div>
@@ -245,7 +265,7 @@ function QuickStart(){
                     </GridList>
                 </div>
             </div>
-            <div>
+            <div className={classes.cardsHeader}>
                 Cobranza
             </div>
             <div>
