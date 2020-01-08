@@ -104,24 +104,48 @@ function QuickStartCard(props) {
                 <CardContent
                     className={classes.cardContent}>
                     <Grid container>
-                    <Grid item xs={12} sm={6}>
-                        <CardSubContent id color={""} value={meta} nameValue={"Meta"} />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <CardSubContent id color={"green"} value={proyection} nameValue={"Proyección"} />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <CardSubContent id color={"yellow"} value={percentProy} nameValue={"%proyección"} />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <CardSubContent id color={"red"} value={difference} nameValue={"Diferencia"} />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <CardSubContent id color={"red"} value={dailyDifference} nameValue={"Promedio diferencia diaria"} />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                        <CardSubContent id color={"red"} value={factor} nameValue={"Factor"} />
-                    </Grid>
+                    {
+                        (meta)
+                            ?   <Grid item xs={12} sm={6}>
+                                    <CardSubContent id color={""} value={meta} nameValue={"Meta"} />
+                                </Grid>
+                            :   null
+                    }
+                    {
+                        (proyection)
+                            ?   <Grid item xs={12} sm={6}>
+                                    <CardSubContent id color={"green"} value={proyection} nameValue={"Proyección"} />
+                                </Grid>
+                            :   null
+                    }
+                    {
+                        (percentProy)
+                            ?   <Grid item xs={12} sm={6}>
+                            <CardSubContent id color={"yellow"} value={percentProy} nameValue={"%proyección"} />
+                        </Grid>
+                            :   null
+                    }
+                    {
+                        (difference)
+                            ?   <Grid item xs={12} sm={6}>
+                            <CardSubContent id color={"red"} value={difference} nameValue={"Diferencia"} />
+                        </Grid>
+                            :   null
+                    }
+                    {
+                        (dailyDifference)
+                            ?   <Grid item xs={12} sm={6}>
+                                    <CardSubContent id color={"red"} value={dailyDifference} nameValue={"Promedio diferencia diaria"} />
+                                </Grid>
+                            :   null
+                    }
+                    {
+                        (factor)
+                            ?   <Grid item xs={12} sm={6}>
+                                    <CardSubContent id color={"red"} value={factor} nameValue={"Factor"} />
+                                </Grid>
+                            :   null
+                    } 
                 </Grid>
                 </CardContent>
                 
