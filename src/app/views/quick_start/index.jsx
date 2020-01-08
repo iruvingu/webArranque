@@ -74,6 +74,50 @@ const tileData = [
       }
   ];
 
+
+  const tileData2 = [
+    {
+      id: 1,
+      title: "CUBETA 0-14",
+      meta: "$9,390,016",
+      proyection: "$5,323,103",
+      percentProy: "56.7%",
+      difference: "$456,789",
+      dailyDifference: "$203,456",
+      factor: ""
+    },
+    {
+      id: 2,
+      title: "CUBETA 15-29",
+      meta: "$9,390,016",
+      proyection: null,
+      percentProy: "56.7%",
+      difference: "$456,789",
+      dailyDifference: "$203,456",
+      factor: "-239.0%"
+    },
+    {
+      id: 3,
+      title: "RESOLUCIÓN 15-29",
+      meta: "$9,390,016",
+      proyection: "$5,323,103",
+      percentProy: "56.7%",
+      difference: "$456,789",
+      dailyDifference: "$203,456",
+      factor: "-239.0%"
+    },
+    {
+      id: 4,
+      title: "CUBETA 30-59",
+      meta: "$9,390,016",
+      proyection: "$5,323,103",
+      percentProy: "56.7%",
+      difference: "$456,789",
+      dailyDifference: "$203,456",
+      factor: "-239.0%"
+    },
+  ];
+
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1
@@ -240,7 +284,6 @@ function QuickStart(){
                 <GridList className={classes.gridList} cols={2.5}>
                     {tileData.map(tile => (
                             <QuickStartCard
-                            
                             id={tile.id}
                             title={tile.title}
                             meta={tile.meta}
@@ -258,7 +301,7 @@ function QuickStart(){
             <div>
                 <div className={classes.singleLineGrid}>
                 <GridList className={classes.gridList} cols={2.5}>
-                    {tileData.map(tile => (
+                    {tileData2.map(tile => (
                         <QuickStartCard
                         id={tile.id}
                         title={tile.title}
