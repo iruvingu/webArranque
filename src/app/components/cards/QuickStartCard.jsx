@@ -6,7 +6,8 @@ import Spinner from '../spinner/Spinner'
 
 const useStyles = makeStyles(theme => ({
     root: {
-        flexGrow: 1
+        flexGrow: 1,
+        margin: '10px',
     },
     card: {
         width: 270,
