@@ -112,8 +112,8 @@ const data = [
 
   const useStyles = makeStyles(theme => ({
       root: {
-          width: 500,
-          height: 400
+          width: 'auto',
+          height: '300px'
       }
   }))
 
