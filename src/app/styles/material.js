@@ -79,8 +79,8 @@ const transition = {
 };
 
 const container = {
-  paddingRight: "10px",
-  paddingLeft: "10px",
+  paddingRight: "5px",
+  paddingLeft: "5px",
   marginRight: "auto",
   marginLeft: "auto"
 };
