@@ -11,6 +11,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Icon from "@material-ui/core/Icon";
 import Grid from '@material-ui/core/Grid'
+import SVG from 'react-inlinesvg';
 
 import {
     drawerWidth,
@@ -163,8 +164,17 @@ const useStyles = makeStyles(theme => ({
         width: "260px",
         zIndex: "4",
         overflowScrolling: "touch"
+    },
+    imageRoot: {
+		textAlign: 'center'
+    },
+    image: {
+		height: '100%',
+		width: '100%'
     }
 }))
+
+const LogoImage = () => <SVG src="/icons/logo_white.svg" />;
 
 function SideBar(props) {
 
@@ -225,14 +235,7 @@ function SideBar(props) {
             <Grid container wrap="nowrap"
                 className={classNames(classes.logoGrid)} 
                 spacing={1}>
-                <Grid container alignItems="center" wrap="nowrap" spacing={2}>
-                    <Grid item>
-                        <img src={logo} alt="logo" className={classes.img} />
-                    </Grid>
-                    <Grid item xs>
-                    <Typography className={classes.logoLink} variant="h4">{logoText}</Typography>
-                    </Grid>
-                </Grid>
+                <LogoImage />
             </Grid>
         </div>
     );
@@ -270,6 +273,9 @@ function SideBar(props) {
             >
               {appName}
               <div className={classes.sidebarWrapper}>{links}</div>
+			  <div className={classes.imageRoot}>
+			  	<img src="/icons/fuerza.png" />
+			  </div>
             </Drawer>
           </Hidden>
         </div>

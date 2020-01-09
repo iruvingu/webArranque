@@ -4,109 +4,154 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const data = [
     {
-      "country": "AD",
-      "hot dog": 1,
-      "hot dogColor": "hsl(50, 70%, 50%)",
-      "burger": 13,
-      "burgerColor": "hsl(260, 70%, 50%)",
-      "sandwich": 148,
-      "sandwichColor": "hsl(114, 70%, 50%)",
-      "kebab": 74,
-      "kebabColor": "hsl(113, 70%, 50%)",
-      "fries": 78,
-      "friesColor": "hsl(202, 70%, 50%)",
-      "donut": 63,
-      "donutColor": "hsl(233, 70%, 50%)"
+      "day": "1",
+      "sucursal": 460000,
+      "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
-      "country": "AE",
-      "hot dog": 170,
-      "hot dogColor": "hsl(122, 70%, 50%)",
-      "burger": 132,
-      "burgerColor": "hsl(58, 70%, 50%)",
-      "sandwich": 63,
-      "sandwichColor": "hsl(313, 70%, 50%)",
-      "kebab": 85,
-      "kebabColor": "hsl(278, 70%, 50%)",
-      "fries": 2,
-      "friesColor": "hsl(142, 70%, 50%)",
-      "donut": 99,
-      "donutColor": "hsl(317, 70%, 50%)"
+      "day": "2",
+      "sucursal": 200000,
+      "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
-      "country": "AF",
-      "hot dog": 152,
-      "hot dogColor": "hsl(130, 70%, 50%)",
-      "burger": 168,
-      "burgerColor": "hsl(109, 70%, 50%)",
-      "sandwich": 118,
-      "sandwichColor": "hsl(61, 70%, 50%)",
-      "kebab": 26,
-      "kebabColor": "hsl(357, 70%, 50%)",
-      "fries": 84,
-      "friesColor": "hsl(221, 70%, 50%)",
-      "donut": 14,
-      "donutColor": "hsl(84, 70%, 50%)"
+      "day": "3",
+      "sucursal": 300000,
+      "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
-      "country": "AG",
-      "hot dog": 4,
-      "hot dogColor": "hsl(68, 70%, 50%)",
-      "burger": 55,
-      "burgerColor": "hsl(185, 70%, 50%)",
-      "sandwich": 152,
-      "sandwichColor": "hsl(247, 70%, 50%)",
-      "kebab": 35,
-      "kebabColor": "hsl(217, 70%, 50%)",
-      "fries": 70,
-      "friesColor": "hsl(118, 70%, 50%)",
-      "donut": 47,
-      "donutColor": "hsl(207, 70%, 50%)"
+      "day": "4",
+      "sucursal": 250000,
+      "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
-      "country": "AI",
-      "hot dog": 140,
-      "hot dogColor": "hsl(265, 70%, 50%)",
-      "burger": 91,
-      "burgerColor": "hsl(310, 70%, 50%)",
-      "sandwich": 115,
-      "sandwichColor": "hsl(134, 70%, 50%)",
-      "kebab": 170,
-      "kebabColor": "hsl(297, 70%, 50%)",
-      "fries": 2,
-      "friesColor": "hsl(22, 70%, 50%)",
-      "donut": 123,
-      "donutColor": "hsl(274, 70%, 50%)"
+      "day": "5",
+      "sucursal": 450000,
+      "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
-      "country": "AL",
-      "hot dog": 140,
-      "hot dogColor": "hsl(41, 70%, 50%)",
-      "burger": 147,
-      "burgerColor": "hsl(200, 70%, 50%)",
-      "sandwich": 45,
-      "sandwichColor": "hsl(267, 70%, 50%)",
-      "kebab": 26,
-      "kebabColor": "hsl(293, 70%, 50%)",
-      "fries": 22,
-      "friesColor": "hsl(165, 70%, 50%)",
-      "donut": 7,
-      "donutColor": "hsl(43, 70%, 50%)"
+      "day": "6",
+      "sucursal": 523000,
+      "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
-      "country": "AM",
-      "hot dog": 96,
-      "hot dogColor": "hsl(153, 70%, 50%)",
-      "burger": 145,
-      "burgerColor": "hsl(75, 70%, 50%)",
-      "sandwich": 82,
-      "sandwichColor": "hsl(265, 70%, 50%)",
-      "kebab": 117,
-      "kebabColor": "hsl(164, 70%, 50%)",
-      "fries": 8,
-      "friesColor": "hsl(220, 70%, 50%)",
-      "donut": 36,
-      "donutColor": "hsl(215, 70%, 50%)"
+      "day": "7",
+      "sucursal": 140048,
+      "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "8",
+        "sucursal": 148000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "9",
+        "sucursal": 450000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "10",
+        "sucursal": 450000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "11",
+        "sucursal": 450000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "12",
+        "sucursal": 450000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "13",
+        "sucursal": 450000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "14",
+        "sucursal": 450000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "15",
+        "sucursal": 450000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "16",
+        "sucursal": 450000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "17",
+        "sucursal": 450000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "18",
+        "sucursal": 450000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "19",
+        "sucursal": 450000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "20",
+        "sucursal": 100000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "21",
+        "sucursal": 100000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "22",
+        "sucursal": 100000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "23",
+        "sucursal": 100000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "24",
+        "sucursal": 100000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "25",
+        "sucursal": 100000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "26",
+        "sucursal": 100000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "27",
+        "sucursal": 100000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "28",
+        "sucursal": 100000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "29",
+        "sucursal": 100000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
+    },
+    {
+        "day": "30",
+        "sucursal": 100000,
+        "sucursalColor": "hsl(260, 70%, 50%)",
     }
   ]
 
@@ -125,11 +170,22 @@ function Home() {
         <div className={classes.root}>
             <ResponsiveBar
             data={data}
-            keys={[ 'hot dog', 'burger', 'sandwich', 'kebab', 'fries', 'donut' ]}
-            indexBy="country"
-            margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
+            keys={[ 'sucursal' ]}
+            indexBy="day"
+            maxValue={600000}
+            margin={{ top: 50, right: 10, bottom: 50, left: 70 }}
             padding={0.3}
             colors={{ scheme: 'nivo' }}
+            markers={[
+                {
+                    axis: 'y',
+                    value: 500000,
+                    lineStyle: { stroke: '#191461', strokeWidth: 2 },
+                    legend: 'META',
+                    
+                    legendOrientation: 'vertical',
+                }
+            ]}
             defs={[
                 {
                     id: 'dots',
@@ -153,40 +209,32 @@ function Home() {
             fill={[
                 {
                     match: {
-                        id: 'fries'
-                    },
-                    id: 'dots'
-                },
-                {
-                    match: {
-                        id: 'sandwich'
+                        id: 'sucursal'
                     },
                     id: 'lines'
                 }
             ]}
-            borderColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
+            borderColor="#000"
             axisTop={null}
             axisRight={null}
-            axisBottom={{
-                tickSize: 5,
-                tickPadding: 5,
-                tickRotation: 0,
-                legend: 'country',
-                legendPosition: 'middle',
-                legendOffset: 32
-            }}
+            axisBottom={null}
             axisLeft={{
                 tickSize: 5,
-                tickPadding: 5,
+                tickPadding: 0,
                 tickRotation: 0,
-                legend: 'food',
+                legend: 'Money',
                 legendPosition: 'middle',
-                legendOffset: -40
+                legendOffset: -60,
+                format: value => 
+                    `$${Number(value).toLocaleString('es-MX', { maximumSignificantDigits: 3 }).substring(0,3)}K`
             }}
-            labelSkipWidth={12}
+            tooltipFormat={ value =>
+                `$${Number(value).toLocaleString('es-MX', { maximumSignificantDigits: 3 })}`
+            }
+            labelSkipWidth={24}
             labelSkipHeight={12}
             labelTextColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
-            legends={[
+            /* legends={[
                 {
                     dataFrom: 'keys',
                     anchor: 'bottom-right',
@@ -209,7 +257,7 @@ function Home() {
                         }
                     ]
                 }
-            ]}
+            ]} */
             animate={true}
             motionStiffness={90}
             motionDamping={15}
