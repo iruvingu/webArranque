@@ -16,10 +16,13 @@ import SwipeableViews from 'react-swipeable-views';
 import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 
-
 // components
 import QuickStartCard from '../../components/cards/QuickStartCard'
-import classNames from "classnames";
+import TCard from '../../components/cards/TimCard'
+import TCardHeader from '../../components/cards/TimCardHeader'
+import TCardBody from '../../components/cards/TimCardContent'
+import { whiteColor, grayColor } from '../../styles/material'
+import Table from '../../components/tables/Table'
 
 const tileData = [
     {
@@ -158,7 +161,8 @@ const useStyles = makeStyles(theme => ({
         flexWrap: 'wrap',
         justifyContent: 'space-around',
         overflow: 'hidden',
-        height: 'unset'
+        height: 'unset',
+        marginRight: '5px'
     },
     gridList: {
         flexWrap: 'nowrap',
@@ -181,6 +185,44 @@ const useStyles = makeStyles(theme => ({
         letterSpacing: 'normal',
         color: theme.palette.primary.main,
         margin: theme.spacing(1)
+    },
+    subtitleDiv: {
+        with: "100%",
+        backgroundColor: theme.palette.secondary.light,
+        fontFamily: 'Roboto',
+        fontSize: '18px',
+        fontWeight: 'bold',
+        fontStretch: 'normal',
+        fontStyle: 'normal',
+        lineHeight: '1.33',
+        letterSpacing: 'normal',
+        textAlign: 'center',
+        color: theme.palette.primary.main,
+        padding: theme.spacing(1),
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(1)
+    },
+    estatusCards: {
+        margin: theme.spacing(2)
+    },
+    cardTitleWhite: {
+        textAlign: 'center',
+        color: whiteColor,
+        marginTop: "0px",
+        minHeight: "auto",
+        fontWeight: "bold",
+        fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+        marginBottom: "1px",
+        textDecoration: "none",
+        "& small": {
+          color: grayColor[1],
+          fontWeight: "400",
+          lineHeight: "1"
+        }
+    },
+    specialCard: {
+        margin: theme.spacing(1),
+        height: "unset",
     }
 }))
 
@@ -277,10 +319,92 @@ function QuickStart(){
                     </Select>
                 </FormControl>
             </div>
+            <div className={classes.subtitleDiv}>ESTATUS</div>
+            <div className={classes.singleLineGrid}>
+                <GridList className={classes.gridList} cols={2.5}>
+                    <div className={classes.specialCard}>
+                        <TCard>
+                            <TCardHeader color="primary">
+                                <h4 className={classes.cardTitleWhite} >INDICADORES</h4>
+                            </TCardHeader>
+                            <TCardBody>
+                                <Table
+                                    tableHeaderColor="primary"
+                                    tableHead={["Indicador", "Real", "Proyección", "Rank Nal"]}
+                                    tableData={[
+                                    ["Colocación Total", "80%", "80%", "80%"],
+                                    ["Nuevos", "80%", "80%", ""],
+                                    ["Cobranza (EPRC)", "80%", "80%", ""],
+                                    ]}
+                                />
+                            </TCardBody>
+                        </TCard>
+                    </div>
+                    <div className={classes.specialCard}>
+                        <TCard>
+                            <TCardHeader color="primary">
+                                <h4 className={classes.cardTitleWhite} >INDICADORES</h4>
+                            </TCardHeader>
+                            <TCardBody>
+                                <Table
+                                    tableHeaderColor="primary"
+                                    tableHead={["Indicador", "Real", "Proyección", "Rank Nal"]}
+                                    tableData={[
+                                    ["Colocación Total", "80%", "80%", "80%"],
+                                    ["Nuevos", "80%", "80%", ""],
+                                    ["Cobranza (EPRC)", "80%", "80%", ""],
+                                    ]}
+                                />
+                            </TCardBody>
+                        </TCard>
+                    </div>
+                    <div className={classes.specialCard}>
+                        <TCard>
+                            <TCardHeader color="primary">
+                                <h4 className={classes.cardTitleWhite} >INDICADORES</h4>
+                            </TCardHeader>
+                            <TCardBody>
+                                <Table
+                                    tableHeaderColor="primary"
+                                    tableHead={["Indicador", "Real", "Proyección", "Rank Nal"]}
+                                    tableData={[
+                                    ["Colocación Total", "80%", "80%", "80%"],
+                                    ["Nuevos", "80%", "80%", ""],
+                                    ["Cobranza (EPRC)", "80%", "80%", ""],
+                                    ]}
+                                />
+                            </TCardBody>
+                        </TCard>
+                    </div>
+                </GridList>
+            </div>
+            {/* <div>
+                <Grid container xs={12}>
+                    <Grid item>
+                        <TCard>
+                            <TCardHeader color="primary">
+                                <h4 className={classes.cardTitleWhite} >INDICADORES</h4>
+                            </TCardHeader>
+                            <TCardBody>
+                                <Table
+                                    tableHeaderColor="primary"
+                                    tableHead={["Indicador", "Real", "Proyección", "Rank Nal"]}
+                                    tableData={[
+                                      ["Colocación Total", "80%", "80%", "80%"],
+                                      ["Nuevos", "80%", "80%", ""],
+                                      ["Cobranza (EPRC)", "80%", "80%", ""],
+                                    ]}
+                                />
+                            </TCardBody>
+                        </TCard>
+                    </Grid>
+                </Grid>
+            </div> */}
+            <div className={classes.subtitleDiv}>FINANCIEROS</div>
             <div className={classes.cardsHeader}>
                 Banner
             </div>
-                <div className={classes.singleLineGrid}>
+            <div className={classes.singleLineGrid}>
                 <GridList className={classes.gridList} cols={2.5}>
                     {tileData.map(tile => (
                             <QuickStartCard
@@ -293,8 +417,8 @@ function QuickStart(){
                             dailyDifference={tile.dailyDifference}
                             factor={tile.factor} />         
                     ))}
-                    </GridList>
-                </div>
+                </GridList>
+            </div>
             <div className={classes.cardsHeader}>
                 Colocación
             </div>
@@ -339,6 +463,7 @@ function QuickStart(){
                     </GridList>
                 </div>
             </div>
+            <div className={classes.subtitleDiv}>INDICADORES DE GESTIÓN</div>
         </div>
     )
 }
