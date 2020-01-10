@@ -47,6 +47,8 @@ const hexToRgb = input => {
   );
 };
 
+const blackColor = "#000";
+const whiteColor = "#FFF";
 const grayColor = [
   "#999",
   "#777",
@@ -66,7 +68,6 @@ const warningColor = ["#ff9800", "#ffa726", "#fb8c00", "#ffa21a"];
 const dangerColor = ["#f44336", "#ef5350", "#e53935", "#f55a4e"];
 const successColor = ["#4caf50", "#66bb6a", "#43a047", "#5cb860"];
 const infoColor = ["#00acc1", "#26c6da", "#00acc1", "#00d3ee"];
-const roseColor = ["#e91e63", "#ec407a", "#d81b60", "#eb3573"];
 
 // ##############################
 // // // Variables - Styles that are used on more than one component
@@ -90,6 +91,16 @@ const defaultFont = {
   fontWeight: "300",
   lineHeight: "1.5em"
 };
+
+const tableFont = {
+  fontFamily: "Roboto",
+  fontSize: "13px",
+  fontWeight: "900",
+  fontStretch: "normal",
+  fontStyle: "normal",
+  lineHeight: "1.38",
+  letterSpacing: "normal",
+}
 
 const boxShadow = {
   boxShadow:
@@ -142,14 +153,6 @@ const dangerBoxShadow = {
     hexToRgb(dangerColor[0]) +
     ",.4)"
 };
-const roseBoxShadow = {
-  boxShadow:
-    "0 4px 20px 0 rgba(" +
-    hexToRgb("#000") +
-    ",.14), 0 7px 10px -5px rgba(" +
-    hexToRgb(roseColor[0]) +
-    ",.4)"
-};
 
 const warningCardHeader = {
   background:
@@ -175,11 +178,6 @@ const primaryCardHeader = {
   background:
     "linear-gradient(60deg, " + primaryColor[1] + ", " + primaryColor[2] + ")",
   ...primaryBoxShadow
-};
-const roseCardHeader = {
-  background:
-    "linear-gradient(60deg, " + roseColor[1] + ", " + roseColor[2] + ")",
-  ...roseBoxShadow
 };
 
 const cardActions = {
@@ -263,6 +261,14 @@ const cardLink = {
 export {
   hexToRgb,
   //variables
+  warningColor,
+  primaryColor,
+  dangerColor,
+  successColor,
+  infoColor,
+  blackColor,
+  whiteColor,
+  grayColor,
   drawerWidth,
   transition,
   container,
@@ -274,18 +280,17 @@ export {
   successBoxShadow,
   warningBoxShadow,
   dangerBoxShadow,
-  roseBoxShadow,
   warningCardHeader,
   successCardHeader,
   dangerCardHeader,
   infoCardHeader,
   primaryCardHeader,
-  roseCardHeader,
   cardActions,
   cardHeader,
   defaultBoxShadow,
   title,
   cardTitle,
   cardSubtitle,
-  cardLink
+  cardLink,
+  tableFont
 };
