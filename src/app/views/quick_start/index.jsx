@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -17,12 +20,15 @@ import GridList from "@material-ui/core/GridList";
 import GridListTile from "@material-ui/core/GridListTile";
 
 // components
+import Spinner from '../../components/spinner/Spinner'
 import QuickStartCard from '../../components/cards/QuickStartCard'
 import TCard from '../../components/cards/TimCard'
 import TCardHeader from '../../components/cards/TimCardHeader'
 import TCardBody from '../../components/cards/TimCardContent'
 import { whiteColor, grayColor } from '../../styles/material'
 import Table from '../../components/tables/Table'
+
+import classNames from 'classnames'
 
 const tileData = [
     {
@@ -121,14 +127,74 @@ const tileData = [
     },
   ];
 
+const estatus = [
+    {
+        id: 1,
+        title: "INDICADORES",
+        row00: "colcacion total",
+        row01: "nuevos",
+        row02: "cobranza (eprc)",
+        real0: "80%",
+        proy0: "85%",
+        rank0: "80%",
+        real1: "80%",
+        proy1: "85%",
+        rank1: "80%",
+        real2: "80%",
+        proy2: "85%",
+        rank2: "80%"
+    },
+    {
+        id: 2,
+        title: "PORTAFOLIO",
+        row00: "colcacion total",
+        row01: "nuevos",
+        row02: "cobranza (eprc)",
+        real0: "80%",
+        proy0: "85%",
+        rank0: "80%",
+        real1: "80%",
+        proy1: "85%",
+        rank1: "80%",
+        real2: "80%",
+        proy2: "85%",
+        rank2: "80%"
+    },
+    {
+        id: 1,
+        title: "VARIACION",
+        row00: "colcacion total",
+        row01: "nuevos",
+        row02: "cobranza (eprc)",
+        real0: "80%",
+        proy0: "85%",
+        rank0: "80%",
+        real1: "80%",
+        proy1: "85%",
+        rank1: "80%",
+        real2: "80%",
+        proy2: "85%",
+        rank2: "80%"
+    }
+]
+
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1
     },
+    backG: {
+        color: theme.palette.primary.main
+    },
     bannerPaper: {
         padding: theme.spacing(1),
         textAlign: 'center',
-        backgroundColor: theme.palette.secondary.light
+        backgroundColor: theme.palette.primary.dark
+    },
+    paper2: {
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.primary.contrastText
     },
     grid: {
         padding: theme.spacing(2),
@@ -155,6 +221,8 @@ const useStyles = makeStyles(theme => ({
     formControl: {
         margin: theme.spacing(1),
         minWidth: 140,
+        backgroundColor: theme.palette.secondary.light,
+        color: theme.palette.primary.main
     },
     singleLineGrid: {
         display: 'flex',
@@ -168,10 +236,6 @@ const useStyles = makeStyles(theme => ({
         flexWrap: 'nowrap',
         // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
         transform: 'translateZ(0)',
-    },
-    gridListTile: {
-        width: "45%",
-        height: "unset",
     },
     cardsHeader: {
         width: '58px',
@@ -203,7 +267,9 @@ const useStyles = makeStyles(theme => ({
         marginBottom: theme.spacing(1)
     },
     estatusCards: {
-        margin: theme.spacing(2)
+        margin: theme.spacing(1),
+        with: '100%',
+        height: '350px'
     },
     cardTitleWhite: {
         textAlign: 'center',
@@ -220,23 +286,31 @@ const useStyles = makeStyles(theme => ({
           lineHeight: "1"
         }
     },
+    estatusGrid: {
+        width: '100%',
+        height: 'inherit',
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+        overflow: 'hidden',
+        marginRight: '5px'
+    },
     specialCard: {
         margin: theme.spacing(1),
-        height: "unset",
-    }
+        with: '400px',
+        height: 'auto',
+    },
 }))
 
-
-
-function QuickStart(){
+function QuickStart({ sucursales }){
 
     const classes = useStyles()
 
-    const [sucursal, setSucursal] = React.useState('')
+    const [sucursalId, setSucursalId] = React.useState('')
     const [open, setOpen] = React.useState(false);
 
     const handleChange = event => {
-        setSucursal(event.target.value);
+        setSucursalId(event.target.value);
       };
     
       const handleClose = () => {
@@ -253,153 +327,138 @@ function QuickStart(){
 
     return(
         <div className={classes.root}>
+            {
+                (!sucursales)
+                ?   <Spinner />
+                :   <div>
+                    <FormControl variant='filled' className={classes.formControl}>
+                        <InputLabel id="sucursalId"><div className={classes.backG}>Sucursal</div></InputLabel>
+                        <Select
+                        labelId="sucursal"
+                        id="open-select-sucursal"
+                        open={open}
+                        onClose={handleClose}
+                        onOpen={handleOpen}
+                        value={sucursalId}
+                        onChange={handleChange}
+                        >
+                        <MenuItem value="">
+                            <em>None</em>
+                        </MenuItem>
+                        {
+                            sucursales.map(sucursal => {
+                            return (<MenuItem value={sucursal.id}>{sucursal.Info.nombreSucursal}</MenuItem>)
+                            })
+                        }
+                        </Select>
+                    </FormControl>
+                </div>
+            }
             <Paper className={classes.bannerPaper}>
-                <Grid container xs={12} column>
-                    <Grid container xs={12} direction="row" justify="flex-start" alignItems="center" spacing={2}>
-                        <Grid item><Typography variant='h6' color='primary'>FISA NM - MEDIANA</Typography></Grid>
-                        <Grid item><Typography>COLOR:</Typography></Grid>
-                        <Grid item><Typography className={classes.redColor} >ROJO</Typography></Grid>
+                <Grid container xs={12} spacing={1} column>
+                    <Grid container xs={12} spacing={1}>
+                        <Grid item xs={12} sm={6} md={3}>
+                        <Typography variant='h6'><div style={{color: "#fff"}}>FISA NM - MEDIANA</div></Typography>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={3}>
+                            <Paper className={classes.paper2}>Días Hábiles: 22</Paper>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={3}>
+                            <Paper className={classes.paper2}>Días transcurridos: 10</Paper>
+                        </Grid>
+                        <Grid item xs={12} sm={6} md={3}>
+                            <Paper className={classes.paper2}>% ACELERADOR: 80%</Paper>
+                        </Grid>
                     </Grid>
-                    <Grid className={classes.grid} container xs={12} justify="space-between" alignItems="flex-start" spacing={2}>
-                        <Grid item xs={12} sm={6} md={3}>
-                            <Card className={classes.bannerCard}>
-                                <CardHeader
-                                    className={classes.cardBannerTitle}
-                                    title={<Typography variant='subtitle1'>Antigüedad: {bannerCardTitle1}</Typography>} />
-                                <CardContent
-                                    className={classes.cardBannerContent}>
-                                    <Typography variant='button'>COLOCACIÓN: 80%</Typography>
-                                </CardContent>
-                            </Card>
+                    <Grid container xs={12} spacing={1}>
+                        <Grid item xs={12} sm={3} md={2}>
+                            <div style={{color: "#fff"}}>Previo: </div>
                         </Grid>
-                        <Grid item xs={12} sm={6} md={3}>
-                            <Card className={classes.bannerCard}>
-                            <CardHeader
-                                    className={classes.cardBannerTitle}
-                                    title={<Typography variant='subtitle1'>Días Hábiles: {bannerCardTitle2}</Typography>} />
-                                <CardContent
-                                    className={classes.cardBannerContent}>
-                                    <Typography variant='button'>eprc: 80%</Typography>
-                                </CardContent>
-                            </Card>
+                        <Grid item xs={12} sm={3} md={2}>
+                            <div style={{color: "#fff"}}>Actual: </div>
                         </Grid>
-                        <Grid item xs={12} sm={6} md={3}>
-                            <Card className={classes.bannerCard}>
-                            <CardHeader
-                                    className={classes.cardBannerTitle}
-                                    title={<Typography variant='subtitle1'>Días transcurridos: {bannerCardTitle3}</Typography>} />
-                                <CardContent
-                                    className={classes.cardBannerContent}>
-                                    <Typography variant='button'>%cálidad: 80%</Typography>
-                                </CardContent>
-                            </Card>
+                        <Grid item xs={12} sm={3} md={2}>
+                            <div style={{color: "#fff"}}>Proyecta: </div>
+                        </Grid>
+                        <Grid item xs={12} sm={3} md={2}>
+                            <div style={{color: "#fff"}}>Azul-Verde: </div>
+                        </Grid>
+                        <Grid item xs={12} sm={3} md={2}>
+                            <div style={{color: "#fff"}}>Amarillo,Verde,Rojo: </div>
+                        </Grid>
+                        <Grid item xs={12} sm={3} md={2}>
+                            <div style={{color: "#fff"}}>Sin Pago: </div>
+                        </Grid>
+                        <Grid item xs={12} sm={3} md={2}>
+                            <div style={{color: "#fff"}}>Total nuevos: </div>
+                        </Grid>
+                        <Grid item xs={12} sm={3} md={2}>
+                            <div style={{color: "#fff"}}>Riesgo: Bajo</div>
                         </Grid>
                     </Grid>
                 </Grid>
             </Paper>
-            <div>
-                <FormControl variant='filled' className={classes.formControl}>
-                    <InputLabel id="sucursal">Sucursal</InputLabel>
-                    <Select
-                    labelId="sucursal"
-                    id="open-select-sucursal"
-                    open={open}
-                    onClose={handleClose}
-                    onOpen={handleOpen}
-                    value={sucursal}
-                    onChange={handleChange}
-                    >
-                    <MenuItem value="">
-                        <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Toluca</MenuItem>
-                    <MenuItem value={20}>Xalapa</MenuItem>
-                    <MenuItem value={30}>Lazaro Cardenas</MenuItem>
-                    <MenuItem value={30}>San Cristobal de las casas</MenuItem>
-                    </Select>
-                </FormControl>
-            </div>
             <div className={classes.subtitleDiv}>ESTATUS</div>
-            <div className={classes.singleLineGrid}>
-                <GridList className={classes.gridList} cols={2.5}>
-                    <div className={classes.specialCard}>
-                        <TCard>
-                            <TCardHeader color="primary">
-                                <h4 className={classes.cardTitleWhite} >INDICADORES</h4>
-                            </TCardHeader>
-                            <TCardBody>
-                                <Table
-                                    tableHeaderColor="primary"
-                                    tableHead={["Indicador", "Real", "Proyección", "Rank Nal"]}
-                                    tableData={[
-                                    ["Colocación Total", "80%", "80%", "80%"],
-                                    ["Nuevos", "80%", "80%", ""],
-                                    ["Cobranza (EPRC)", "80%", "80%", ""],
-                                    ]}
-                                />
-                            </TCardBody>
-                        </TCard>
-                    </div>
-                    <div className={classes.specialCard}>
-                        <TCard>
-                            <TCardHeader color="primary">
-                                <h4 className={classes.cardTitleWhite} >INDICADORES</h4>
-                            </TCardHeader>
-                            <TCardBody>
-                                <Table
-                                    tableHeaderColor="primary"
-                                    tableHead={["Indicador", "Real", "Proyección", "Rank Nal"]}
-                                    tableData={[
-                                    ["Colocación Total", "80%", "80%", "80%"],
-                                    ["Nuevos", "80%", "80%", ""],
-                                    ["Cobranza (EPRC)", "80%", "80%", ""],
-                                    ]}
-                                />
-                            </TCardBody>
-                        </TCard>
-                    </div>
-                    <div className={classes.specialCard}>
-                        <TCard>
-                            <TCardHeader color="primary">
-                                <h4 className={classes.cardTitleWhite} >INDICADORES</h4>
-                            </TCardHeader>
-                            <TCardBody>
-                                <Table
-                                    tableHeaderColor="primary"
-                                    tableHead={["Indicador", "Real", "Proyección", "Rank Nal"]}
-                                    tableData={[
-                                    ["Colocación Total", "80%", "80%", "80%"],
-                                    ["Nuevos", "80%", "80%", ""],
-                                    ["Cobranza (EPRC)", "80%", "80%", ""],
-                                    ]}
-                                />
-                            </TCardBody>
-                        </TCard>
-                    </div>
-                </GridList>
+            <div className={classes.estatusCards}>
+                <div className={classes.estatusGrid}>
+                    <GridList className={classes.gridList} cols={2.5}>
+                        <div className={classes.specialCard}>
+                            <TCard>
+                                <TCardHeader color="primary">
+                                    <h4 className={classes.cardTitleWhite} >INDICADORES</h4>
+                                </TCardHeader>
+                                <TCardBody>
+                                    <Table
+                                        tableHeaderColor="primary"
+                                        tableHead={["Indicador", "Real", "Proyección", "Rank Nal"]}
+                                        tableData={[
+                                        ["Colocación Total", "80%", "80%", "80%"],
+                                        ["Nuevos", "80%", "80%", ""],
+                                        ["Cobranza (EPRC)", "80%", "80%", ""],
+                                        ]}
+                                    />
+                                </TCardBody>
+                            </TCard>
+                        </div>
+                        <div  className={classes.specialCard}>
+                            <TCard>
+                                <TCardHeader color="primary">
+                                    <h4 className={classes.cardTitleWhite} >PORTAFOLIO</h4>
+                                </TCardHeader>
+                                <TCardBody>
+                                    <Table
+                                        tableHeaderColor="primary"
+                                        tableHead={["Mes", "Total", "Crecimiento"]}
+                                        tableData={[
+                                        ["Octubre", "$11,500,000", "$300,000"],
+                                        ["Noviembre", "$11,500,000", "$300,000"],
+                                        ["Diciembre", "$12,500,000", "$300,000"],
+                                        ]}
+                                    />
+                                </TCardBody>
+                            </TCard>
+                        </div>
+                        <div className={classes.specialCard}>
+                            <TCard>
+                                <TCardHeader color="primary">
+                                    <h4 className={classes.cardTitleWhite} >VARIACIÓN</h4>
+                                </TCardHeader>
+                                <TCardBody>
+                                    <Table
+                                        tableHeaderColor="primary"
+                                        tableHead={["Mes", "Clientes", "Variación"]}
+                                        tableData={[
+                                        ["Octubre", "990", "10"],
+                                        ["Noviembre", "1,050", "60"],
+                                        ["Diciembre", "1,000", "50"],
+                                        ]}
+                                    />
+                                </TCardBody>
+                            </TCard>
+                        </div>
+                    </GridList>
+                </div>
             </div>
-            {/* <div>
-                <Grid container xs={12}>
-                    <Grid item>
-                        <TCard>
-                            <TCardHeader color="primary">
-                                <h4 className={classes.cardTitleWhite} >INDICADORES</h4>
-                            </TCardHeader>
-                            <TCardBody>
-                                <Table
-                                    tableHeaderColor="primary"
-                                    tableHead={["Indicador", "Real", "Proyección", "Rank Nal"]}
-                                    tableData={[
-                                      ["Colocación Total", "80%", "80%", "80%"],
-                                      ["Nuevos", "80%", "80%", ""],
-                                      ["Cobranza (EPRC)", "80%", "80%", ""],
-                                    ]}
-                                />
-                            </TCardBody>
-                        </TCard>
-                    </Grid>
-                </Grid>
-            </div> */}
             <div className={classes.subtitleDiv}>FINANCIEROS</div>
             <div className={classes.cardsHeader}>
                 Banner
@@ -415,7 +474,7 @@ function QuickStart(){
                             percentProy={tile.percentProy}
                             difference={tile.difference}
                             dailyDifference={tile.dailyDifference}
-                            factor={tile.factor} />         
+                            factor={tile.factor} />      
                     ))}
                 </GridList>
             </div>
@@ -464,8 +523,81 @@ function QuickStart(){
                 </div>
             </div>
             <div className={classes.subtitleDiv}>INDICADORES DE GESTIÓN</div>
+            <div className={classes.estatusCards}>
+                <div className={classes.estatusGrid}>
+                    <GridList className={classes.gridList} cols={2.5}>
+                        <div className={classes.specialCard}>
+                            <TCard>
+                                <TCardHeader color="primary">
+                                    <h4 className={classes.cardTitleWhite} >PLANTILLAS</h4>
+                                </TCardHeader>
+                                <TCardBody>
+                                    <Table
+                                        tableHeaderColor="primary"
+                                        tableHead={["Ejecutivos", "Autorizado", "Activo"]}
+                                        tableData={[
+                                        ["Credito", "80%", "80%"],
+                                        ["Promoción", "80%", "80%"],
+                                        ["Cobranza", "80%", "80%"],
+                                        ]}
+                                    />
+                                </TCardBody>
+                            </TCard>
+                        </div>
+                        <div  className={classes.specialCard}>
+                            <TCard>
+                                <TCardHeader color="primary">
+                                    <h4 className={classes.cardTitleWhite} >CAMPAÑAS</h4>
+                                </TCardHeader>
+                                <TCardBody>
+                                    <Table
+                                        tableHeaderColor="primary"
+                                        tableHead={["Campaña", "Solicitudes", "Convertidos", "%Conversión"]}
+                                        tableData={[
+                                        ["Landing", "5", "3", "50.0%"],
+                                        ["Findep Móvil", "30", "2", "6.7%"],
+                                        ]}
+                                    />
+                                </TCardBody>
+                            </TCard>
+                        </div>
+                        <div className={classes.specialCard}>
+                            <TCard>
+                                <TCardHeader color="primary">
+                                    <h4 className={classes.cardTitleWhite} >FINDEP MOVIL</h4>
+                                </TCardHeader>
+                                <TCardBody>
+                                    <Table
+                                        tableHeaderColor="primary"
+                                        tableHead={["Ejecutivos", "Findep Móvil"]}
+                                        tableData={[
+                                        ["Promoción activos", "4"],
+                                        ["Créditos activos", "3"],
+                                        ["Promoción", "7"],
+                                        ["Solicitud", "3"],
+                                        ["Solicitudes/Promoción", "7"],
+                                        ]}
+                                    />
+                                </TCardBody>
+                            </TCard>
+                        </div>
+                    </GridList>
+                </div>
+            </div>
         </div>
     )
 }
 
-export default QuickStart
+export default compose(
+    firestoreConnect([
+        {
+            collection: 'app_indicadores',
+            doc: 'FINDEP',
+            subcollections: [{ collection: 'indicadores_sucursal' }],
+            storeAs: 'sucursales'
+        }
+    ]),
+    connect((state, props) => ({
+        sucursales: state.firestore.ordered.sucursales
+    }))
+)(QuickStart)
