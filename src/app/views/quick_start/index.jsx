@@ -300,6 +300,13 @@ const useStyles = makeStyles(theme => ({
         with: '400px',
         height: 'auto',
     },
+    spinner: {
+        with: "100%",
+        height: "100%",
+        display: "flex",
+        justifyContent: 'center',
+        alignContent: 'center'
+    }
 }))
 
 function QuickStart({ sucursales }){
@@ -330,7 +337,7 @@ function QuickStart({ sucursales }){
     let bannerCardTitle3 = '10' 
 
     return((!sucursales)
-        ?   <Spinner className={classes.backG} />
+        ?   <div className={classes.spinner}><Spinner /></div>  
     :   <div className={classes.root}>
             <div>
                     <FormControl variant='filled' className={classes.formControl}>
