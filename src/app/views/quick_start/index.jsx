@@ -321,16 +321,18 @@ function QuickStart({ sucursales }){
         setOpen(true);
       };
 
+    function filterSucursales(values) {
+        return values.filter(value => value.info !== "")
+    }
+
     let bannerCardTitle1 = `7 meses`
     let bannerCardTitle2 = '22'
     let bannerCardTitle3 = '10' 
 
-    return(
-        <div className={classes.root}>
-            {
-                (!sucursales)
-                ?   <Spinner />
-                :   <div>
+    return((!sucursales)
+        ?   <Spinner className={classes.backG} />
+    :   <div className={classes.root}>
+            <div>
                     <FormControl variant='filled' className={classes.formControl}>
                         <InputLabel id="sucursalId"><div className={classes.backG}>Sucursal</div></InputLabel>
                         <Select
@@ -346,14 +348,16 @@ function QuickStart({ sucursales }){
                             <em>None</em>
                         </MenuItem>
                         {
-                            sucursales.map(sucursal => {
-                            return (<MenuItem value={sucursal.id}>{sucursal.Info.nombreSucursal}</MenuItem>)
-                            })
+                            sucursales
+                                .map(sucursal => {
+                                     return (sucursal.Info)
+                                        ?   <MenuItem value={sucursal.id}>{sucursal.Info.nombreSucursal}</MenuItem>
+                                        :   null
+                                })
                         }
                         </Select>
                     </FormControl>
                 </div>
-            }
             <Paper className={classes.bannerPaper}>
                 <Grid container xs={12} spacing={1} column>
                     <Grid container xs={12} spacing={1}>
