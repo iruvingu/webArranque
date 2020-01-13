@@ -201,6 +201,9 @@ const useStyles = makeStyles(theme => ({
     grid: {
         padding: theme.spacing(2),
     },
+    gridItemMargin: {
+        marginTop: theme.spacing(1)
+    },
     redColor: {
         color: theme.palette.error.main
     },
@@ -355,16 +358,12 @@ function QuickStart({ sucursales }){
     let bannerCardTitle2 = '22'
     let bannerCardTitle3 = '10' 
 
-    return(
-        <div className={classes.root}>
-            <HeaderInfoManager/>
-
-            <HeaderInfo/>
 
     return((!sucursales)
         ?   <div className={classes.spinner}><Spinner /></div>  
     :   <div className={classes.root}>
-            <div>
+        <HeaderInfoManager/>
+            {/* <div>
                     <FormControl variant='filled' className={classes.formControl}>
                         <InputLabel id="sucursalId"><div className={classes.backG}>Sucursal</div></InputLabel>
                         <Select
@@ -389,10 +388,10 @@ function QuickStart({ sucursales }){
                         }
                         </Select>
                     </FormControl>
-                </div>
+                </div> */}
             <Paper className={classes.bannerPaper}>
-                <Grid container xs={12} spacing={1} column>
-                    <Grid container xs={12} spacing={1}>
+                <Grid container xs={12} >
+                    <Grid container xs={12} spacing={3}>
                         <Grid item xs={12} sm={6} md={3}>
                         <Typography variant='h6'><div style={{color: "#fff"}}>FISA NM - MEDIANA</div></Typography>
                         </Grid>
@@ -406,29 +405,29 @@ function QuickStart({ sucursales }){
                             <Paper className={classes.paper2}>% ACELERADOR: 80%</Paper>
                         </Grid>
                     </Grid>
-                    <Grid container xs={12} spacing={1}>
-                        <Grid item xs={12} sm={3} md={2}>
-                            <div style={{color: "#fff"}}>Previo: </div>
+                    <Grid className={classes.gridItemMargin} container xs={12} spacing={1}>
+                        <Grid item xs={6} sm={2} md={2}>
+                            <div style={{color: "#fff"}}>PREVIO: </div>
                         </Grid>
-                        <Grid item xs={12} sm={3} md={2}>
-                            <div style={{color: "#fff"}}>Actual: </div>
+                        <Grid item xs={6} sm={2} md={2}>
+                            <div style={{color: "#fff"}}>ACTUAL: </div>
                         </Grid>
-                        <Grid item xs={12} sm={3} md={2}>
-                            <div style={{color: "#fff"}}>Proyecta: </div>
+                        <Grid item xs={6} sm={2} md={2}>
+                            <div style={{color: "#fff"}}>PROYECTA: </div>
                         </Grid>
-                        <Grid item xs={12} sm={3} md={2}>
+                        <Grid item xs={6} sm={2} md={2}>
                             <div style={{color: "#fff"}}>Azul-Verde: </div>
                         </Grid>
-                        <Grid item xs={12} sm={3} md={2}>
+                        <Grid item xs={6} sm={2} md={2}>
                             <div style={{color: "#fff"}}>Amarillo,Verde,Rojo: </div>
                         </Grid>
-                        <Grid item xs={12} sm={3} md={2}>
+                        <Grid item xs={6} sm={2} md={2}>
                             <div style={{color: "#fff"}}>Sin Pago: </div>
                         </Grid>
-                        <Grid item xs={12} sm={3} md={2}>
+                        <Grid item xs={6} sm={2} md={2}>
                             <div style={{color: "#fff"}}>Total nuevos: </div>
                         </Grid>
-                        <Grid item xs={12} sm={3} md={2}>
+                        <Grid item xs={6} sm={2} md={2}>
                             <div style={{color: "#fff"}}>Riesgo: Bajo</div>
                         </Grid>
                     </Grid>
@@ -500,89 +499,6 @@ function QuickStart({ sucursales }){
                 
                         
             </GridList>
-
-            {/* <div>
-                <Grid container xs={12}>
-                    <Grid item>
-                        <TCard>
-                            <TCardHeader color="primary">
-                                <h4 className={classes.cardTitleWhite} >INDICADORES</h4>
-                            </TCardHeader>
-                            <TCardBody>
-                                <Table
-                                    tableHeaderColor="primary"
-                                    tableHead={["Indicador", "Real", "Proyección", "Rank Nal"]}
-                                    tableData={[
-                                      ["Colocación Total", "80%", "80%", "80%"],
-                                      ["Nuevos", "80%", "80%", ""],
-                                      ["Cobranza (EPRC)", "80%", "80%", ""],
-                                    ]}
-                                />
-                            </TCardBody>
-                        </TCard>
-                    </Grid>
-                </Grid>
-            </div> */}
-            <div className={classes.estatusCards}>
-                <div className={classes.estatusGrid}>
-                    <GridList className={classes.gridList} cols={2.5}>
-                        <div className={classes.specialCard}>
-                            <TCard>
-                                <TCardHeader color="primary">
-                                    <h4 className={classes.cardTitleWhite} >INDICADORES</h4>
-                                </TCardHeader>
-                                <TCardBody>
-                                    <Table
-                                        tableHeaderColor="primary"
-                                        tableHead={["Indicador", "Real", "Proyección", "Rank Nal"]}
-                                        tableData={[
-                                        ["Colocación Total", "80%", "80%", "80%"],
-                                        ["Nuevos", "80%", "80%", ""],
-                                        ["Cobranza (EPRC)", "80%", "80%", ""],
-                                        ]}
-                                    />
-                                </TCardBody>
-                            </TCard>
-                        </div>
-                        <div  className={classes.specialCard}>
-                            <TCard>
-                                <TCardHeader color="primary">
-                                    <h4 className={classes.cardTitleWhite} >PORTAFOLIO</h4>
-                                </TCardHeader>
-                                <TCardBody>
-                                    <Table
-                                        tableHeaderColor="primary"
-                                        tableHead={["Mes", "Total", "Crecimiento"]}
-                                        tableData={[
-                                        ["Octubre", "$11,500,000", "$300,000"],
-                                        ["Noviembre", "$11,500,000", "$300,000"],
-                                        ["Diciembre", "$12,500,000", "$300,000"],
-                                        ]}
-                                    />
-                                </TCardBody>
-                            </TCard>
-                        </div>
-                        <div className={classes.specialCard}>
-                            <TCard>
-                                <TCardHeader color="primary">
-                                    <h4 className={classes.cardTitleWhite} >VARIACIÓN</h4>
-                                </TCardHeader>
-                                <TCardBody>
-                                    <Table
-                                        tableHeaderColor="primary"
-                                        tableHead={["Mes", "Clientes", "Variación"]}
-                                        tableData={[
-                                        ["Octubre", "990", "10"],
-                                        ["Noviembre", "1,050", "60"],
-                                        ["Diciembre", "1,000", "50"],
-                                        ]}
-                                    />
-                                </TCardBody>
-                            </TCard>
-                        </div>
-                    </GridList>
-                </div>
-            </div>
             <div className={classes.subtitleDiv}>FINANCIEROS</div>
             <div className={classes.cardsHeader}>
                 Banner
@@ -646,10 +562,6 @@ function QuickStart({ sucursales }){
                     </GridList>
                 </div>
             </div>
-
-
-
-
             <div className={classes.subtitleDiv}>INDICADORES DE GESTIÓN</div>
             <GridList className={classes.gridListProbe} cols={2.5}>
                     <div className={classes.specialCard}>
@@ -708,93 +620,6 @@ function QuickStart({ sucursales }){
                         </TCard>
                     </div>
                 </GridList>
-            
-
-            {
-                    /**
-                     * <Grid 
-            container
-            direction="row"
-            justify="space-evenly"
-            alignItems="start">
-
-                <Grid>
-                    <TCard>
-                    <TCardHeader color="primary">
-                        <h4 className={classes.cardTitleWhite} >PLANTILLAS</h4>
-                    </TCardHeader>
-                    <TCardBody>
-                        <Table
-                        tableHeaderColor="primary"
-                        tableHead={["Ejecutivos", "Autorizado", "Activo"]}
-                        tableData={[
-                            ["Credito", "", ""],
-                            ["Promocion", "", ""],
-                            ["Cobranza", "", ""],
-                        ]}/>
-                    </TCardBody>
-                </TCard>
-
-                </Grid>
-                
-                <Grid>
-                <TCard>
-                    <TCardHeader color="primary">
-                        <h4 className={classes.cardTitleWhite} >CAMPANAS</h4>
-                    </TCardHeader>
-                    <TCardBody>
-                        <Table
-                        tableHeaderColor="primary"
-                        tableHead={["Campanas", "Solicitudes", "Convertidos", "% Conversion"]}
-                        tableData={[
-                            ["Landing", "5", "3", "50.0%"],
-                            ["Findep Movil", "30", "2", "6.7%"],
-                        ]}/>
-                    </TCardBody>
-                </TCard>
-                </Grid>
-
-                <Grid>
-                <TCard>
-                    <TCardHeader color="primary">
-                        <h4 className={classes.cardTitleWhite} >FINDEP MOVIL</h4>
-                    </TCardHeader>
-                    <TCardBody>
-                        <Table
-                        tableHeaderColor="primary"
-                        tableHead={["Ejecutivos", "Findeo Movil"]}
-                        tableData={[
-                            ["Promocion activos", "4"],
-                            ["Creditos Activos", "3"],
-                            ["Promocion", "7"],
-                            ["Solicitud", "3"],
-                            ["Solicitud/Promocion", "0.4"],
-                        ]}/>
-                    </TCardBody>
-                </TCard>
-                </Grid>
-            
-            </Grid>
-                     */
-            }
-
-
-
-
-            {
-                            /*
-                            
-            
-                            */
-                        }
-
-
-
-
-
-
-
-
             <div className={classes.estatusCards}>
                 <div className={classes.estatusGrid}>
                     <GridList className={classes.gridList} cols={2.5}>
@@ -860,7 +685,7 @@ function QuickStart({ sucursales }){
     )
 }
 
-export default compose(
+export default /* compose(
     firestoreConnect([
         {
             collection: 'app_indicadores',
@@ -872,4 +697,4 @@ export default compose(
     connect((state, props) => ({
         sucursales: state.firestore.ordered.sucursales
     }))
-)(QuickStart)
+) */(QuickStart)
