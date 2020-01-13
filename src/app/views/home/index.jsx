@@ -1,165 +1,459 @@
 import React from 'react';
 import { ResponsiveBar } from '@nivo/bar'
 import { makeStyles } from "@material-ui/core/styles";
+import GraphicEPRC from '../../components/ graphics/GraphicEPRC';
+import GraphicColocation from '../../components/ graphics/GraphicColocation';
+import SingleSelector from '../../components/spinner/SingleSelector';
+import GroupSelector from '../../components/spinner/GroupSelector';
+import HeaderInfo from "../../components/cards/HeaderInfo";
 
-const data = [
+const dataEprc = [
     {
       "day": "1",
-      "sucursal": 460000,
+      "proyeccion": 460000,
       "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
       "day": "2",
-      "sucursal": 200000,
+      "proyeccion": 200000,
       "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
       "day": "3",
-      "sucursal": 300000,
+      "proyeccion": 300000,
       "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
       "day": "4",
-      "sucursal": 250000,
+      "proyeccion": 250000,
       "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
       "day": "5",
-      "sucursal": 450000,
+      "proyeccion": 450000,
       "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
       "day": "6",
-      "sucursal": 523000,
+      "proyeccion": 523000,
       "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
       "day": "7",
-      "sucursal": 140048,
+      "proyeccion": 140048,
       "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "8",
-        "sucursal": 148000,
+        "proyeccion": 148000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "9",
-        "sucursal": 450000,
+        "proyeccion": 450000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "10",
-        "sucursal": 450000,
+        "proyeccion": 450000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "11",
-        "sucursal": 450000,
+        "proyeccion": 450000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "12",
-        "sucursal": 450000,
+        "proyeccion": 450000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "13",
-        "sucursal": 450000,
+        "proyeccion": 450000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "14",
-        "sucursal": 450000,
+        "proyeccion": 450000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "15",
-        "sucursal": 450000,
+        "proyeccion": 450000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "16",
-        "sucursal": 450000,
+        "proyeccion": 450000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "17",
-        "sucursal": 450000,
+        "proyeccion": 450000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "18",
-        "sucursal": 450000,
+        "proyeccion": 450000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "19",
-        "sucursal": 450000,
+        "proyeccion": 450000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "20",
-        "sucursal": 100000,
+        "proyeccion": 100000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "21",
-        "sucursal": 100000,
+        "proyeccion": 100000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "22",
-        "sucursal": 100000,
+        "proyeccion": 100000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "23",
-        "sucursal": 100000,
+        "proyeccion": 100000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "24",
-        "sucursal": 100000,
+        "proyeccion": 100000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "25",
-        "sucursal": 100000,
+        "proyeccion": 100000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "26",
-        "sucursal": 100000,
+        "proyeccion": 100000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "27",
-        "sucursal": 100000,
+        "proyeccion": 100000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "28",
-        "sucursal": 100000,
+        "proyeccion": 100000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "29",
-        "sucursal": 100000,
+        "proyeccion": 100000,
         "sucursalColor": "hsl(260, 70%, 50%)",
     },
     {
         "day": "30",
-        "sucursal": 100000,
+        "proyeccion": 100000,
         "sucursalColor": "hsl(260, 70%, 50%)",
+    }
+  ]
+
+  const dataColocation = [
+    {
+      day: '1',
+      formers: 145,
+      revolventes: 86,
+      renovaciones: 130,
+      nuevos: 90,
+      fries: 69,
+      donut: 27,
+    },
+    {
+      day: '2',
+      formers: 24,
+      revolventes: 105,
+      renovaciones: 14,
+      nuevos: 100,
+      fries: 70,
+      donut: 28,
+    },
+    {
+      day: '3',
+      formers: 17,
+      revolventes: 9,
+      renovaciones: 138,
+      nuevos: 52,
+      fries: 114,
+      donut: 181,
+    },
+    {
+      day: '4',
+      formers: 170,
+      revolventes: 49,
+      renovaciones: 29,
+      nuevos: 132,
+      fries: 29,
+      donut: 175,
+    },
+    {
+      day: '5',
+      formers: 126,
+      revolventes: 189,
+      renovaciones: 65,
+      nuevos: 74,
+      fries: 21,
+      donut: 85,
+    },
+    {
+      day: '6',
+      formers: 186,
+      revolventes: 115,
+      renovaciones: 161,
+      nuevos: 191,
+      fries: 71,
+      donut: 53,
+    },
+    {
+      day: '7',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '8',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '9',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '10',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '11',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '12',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '13',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '14',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '15',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '16',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '17',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '18',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '19',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '20',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '21',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '22',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '23',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '24',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '25',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '26',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '27',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '28',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '29',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
+    },
+    {
+      day: '30',
+      formers: 141,
+      revolventes: 90,
+      renovaciones: 148,
+      nuevos: 179,
+      fries: 72,
+      donut: 35,
     }
   ]
 
   const useStyles = makeStyles(theme => ({
       root: {
           width: 'auto',
-          height: '300px'
-      }
+          height: '400px'
+      },
+      subtitleDiv: {
+        with: "100%",
+        backgroundColor: theme.palette.secondary.light,
+        fontFamily: 'Roboto',
+        fontSize: '18px',
+        fontWeight: 'bold',
+        fontStretch: 'normal',
+        fontStyle: 'normal',
+        lineHeight: '1.33',
+        letterSpacing: 'normal',
+        textAlign: 'center',
+        color: theme.palette.primary.main,
+        padding: theme.spacing(1),
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(1)
+    }
   }))
 
 function Home() {
@@ -168,100 +462,11 @@ function Home() {
 
     return(
         <div className={classes.root}>
-            <ResponsiveBar
-            data={data}
-            keys={[ 'sucursal' ]}
-            indexBy="day"
-            maxValue={600000}
-            margin={{ top: 50, right: 10, bottom: 50, left: 70 }}
-            padding={0.3}
-            colors={{ scheme: 'nivo' }}
-            markers={[
-                {
-                    axis: 'y',
-                    value: 500000,
-                    lineStyle: { stroke: '#191461', strokeWidth: 2 },
-                    legend: 'META',
-                    
-                    legendOrientation: 'vertical',
-                }
-            ]}
-            defs={[
-                {
-                    id: 'dots',
-                    type: 'patternDots',
-                    background: 'inherit',
-                    color: '#38bcb2',
-                    size: 4,
-                    padding: 1,
-                    stagger: true
-                },
-                {
-                    id: 'lines',
-                    type: 'patternLines',
-                    background: 'inherit',
-                    color: '#eed312',
-                    rotation: -45,
-                    lineWidth: 6,
-                    spacing: 10
-                }
-            ]}
-            fill={[
-                {
-                    match: {
-                        id: 'sucursal'
-                    },
-                    id: 'lines'
-                }
-            ]}
-            borderColor="#000"
-            axisTop={null}
-            axisRight={null}
-            axisBottom={null}
-            axisLeft={{
-                tickSize: 5,
-                tickPadding: 0,
-                tickRotation: 0,
-                legend: 'Money',
-                legendPosition: 'middle',
-                legendOffset: -60,
-                format: value => 
-                    `$${Number(value).toLocaleString('es-MX', { maximumSignificantDigits: 3 }).substring(0,3)}K`
-            }}
-            tooltipFormat={ value =>
-                `$${Number(value).toLocaleString('es-MX', { maximumSignificantDigits: 3 })}`
-            }
-            labelSkipWidth={24}
-            labelSkipHeight={12}
-            labelTextColor={{ from: 'color', modifiers: [ [ 'darker', 1.6 ] ] }}
-            /* legends={[
-                {
-                    dataFrom: 'keys',
-                    anchor: 'bottom-right',
-                    direction: 'column',
-                    justify: false,
-                    translateX: 120,
-                    translateY: 0,
-                    itemsSpacing: 2,
-                    itemWidth: 100,
-                    itemHeight: 20,
-                    itemDirection: 'left-to-right',
-                    itemOpacity: 0.85,
-                    symbolSize: 20,
-                    effects: [
-                        {
-                            on: 'hover',
-                            style: {
-                                itemOpacity: 1
-                            }
-                        }
-                    ]
-                }
-            ]} */
-            animate={true}
-            motionStiffness={90}
-            motionDamping={15}
-        />
+            <GroupSelector/>
+            <div className={classes.subtitleDiv}>EPRC</div>
+            <GraphicEPRC data={dataEprc}/>
+            <div className={classes.subtitleDiv}>Colocacion</div>
+            <GraphicColocation data={dataColocation}/>
         </div>
     )
 }

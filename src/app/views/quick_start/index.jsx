@@ -23,6 +23,8 @@ import TCardHeader from '../../components/cards/TimCardHeader'
 import TCardBody from '../../components/cards/TimCardContent'
 import { whiteColor, grayColor } from '../../styles/material'
 import Table from '../../components/tables/Table'
+import HeaderInfoManager from "../../components/cards/HeaderInfoManager";
+import HeaderInfo from "../../components/cards/HeaderInfo";
 
 const tileData = [
     {
@@ -169,13 +171,25 @@ const useStyles = makeStyles(theme => ({
         // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
         transform: 'translateZ(0)',
     },
+    gridListProbe: {
+        flexWrap: 'nowrap',
+        minHeight:'420px',
+        height:'auto',
+        // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+        transform: 'translateZ(0)',
+    },
+    gridListStatus: {
+        flexWrap: 'nowrap',
+        minHeight:'320px',
+        // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+        transform: 'translateZ(0)',
+    },
     gridListTile: {
         width: "45%",
         height: "unset",
     },
     cardsHeader: {
-        width: '58px',
-        height: '24px',
+
         fontFamily: 'Roboto',
         fontSize: '18px',
         fontWeight: 'bold',
@@ -222,7 +236,7 @@ const useStyles = makeStyles(theme => ({
     },
     specialCard: {
         margin: theme.spacing(1),
-        height: "unset",
+        height: "auto",
     }
 }))
 
@@ -253,77 +267,14 @@ function QuickStart(){
 
     return(
         <div className={classes.root}>
-            <Paper className={classes.bannerPaper}>
-                <Grid container xs={12} column>
-                    <Grid container xs={12} direction="row" justify="flex-start" alignItems="center" spacing={2}>
-                        <Grid item><Typography variant='h6' color='primary'>FISA NM - MEDIANA</Typography></Grid>
-                        <Grid item><Typography>COLOR:</Typography></Grid>
-                        <Grid item><Typography className={classes.redColor} >ROJO</Typography></Grid>
-                    </Grid>
-                    <Grid className={classes.grid} container xs={12} justify="space-between" alignItems="flex-start" spacing={2}>
-                        <Grid item xs={12} sm={6} md={3}>
-                            <Card className={classes.bannerCard}>
-                                <CardHeader
-                                    className={classes.cardBannerTitle}
-                                    title={<Typography variant='subtitle1'>Antigüedad: {bannerCardTitle1}</Typography>} />
-                                <CardContent
-                                    className={classes.cardBannerContent}>
-                                    <Typography variant='button'>COLOCACIÓN: 80%</Typography>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                        <Grid item xs={12} sm={6} md={3}>
-                            <Card className={classes.bannerCard}>
-                            <CardHeader
-                                    className={classes.cardBannerTitle}
-                                    title={<Typography variant='subtitle1'>Días Hábiles: {bannerCardTitle2}</Typography>} />
-                                <CardContent
-                                    className={classes.cardBannerContent}>
-                                    <Typography variant='button'>eprc: 80%</Typography>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                        <Grid item xs={12} sm={6} md={3}>
-                            <Card className={classes.bannerCard}>
-                            <CardHeader
-                                    className={classes.cardBannerTitle}
-                                    title={<Typography variant='subtitle1'>Días transcurridos: {bannerCardTitle3}</Typography>} />
-                                <CardContent
-                                    className={classes.cardBannerContent}>
-                                    <Typography variant='button'>%cálidad: 80%</Typography>
-                                </CardContent>
-                            </Card>
-                        </Grid>
-                    </Grid>
-                </Grid>
-            </Paper>
-            <div>
-                <FormControl variant='filled' className={classes.formControl}>
-                    <InputLabel id="sucursal">Sucursal</InputLabel>
-                    <Select
-                    labelId="sucursal"
-                    id="open-select-sucursal"
-                    open={open}
-                    onClose={handleClose}
-                    onOpen={handleOpen}
-                    value={sucursal}
-                    onChange={handleChange}
-                    >
-                    <MenuItem value="">
-                        <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Toluca</MenuItem>
-                    <MenuItem value={20}>Xalapa</MenuItem>
-                    <MenuItem value={30}>Lazaro Cardenas</MenuItem>
-                    <MenuItem value={30}>San Cristobal de las casas</MenuItem>
-                    </Select>
-                </FormControl>
-            </div>
+            <HeaderInfoManager/>
+
+            <HeaderInfo/>
+
             <div className={classes.subtitleDiv}>ESTATUS</div>
-            <div className={classes.singleLineGrid}>
-                <GridList className={classes.gridList} cols={2.5}>
-                    <div className={classes.specialCard}>
-                        <TCard>
+            <GridList className={classes.gridListStatus} cols={2.5}>
+                <div className={classes.specialCard}>
+                <TCard>
                             <TCardHeader color="primary">
                                 <h4 className={classes.cardTitleWhite} >INDICADORES</h4>
                             </TCardHeader>
@@ -339,45 +290,54 @@ function QuickStart(){
                                 />
                             </TCardBody>
                         </TCard>
-                    </div>
-                    <div className={classes.specialCard}>
-                        <TCard>
+
+                </div>
+
+                <div className={classes.specialCard}>
+
+                <TCard>
                             <TCardHeader color="primary">
-                                <h4 className={classes.cardTitleWhite} >INDICADORES</h4>
+                                <h4 className={classes.cardTitleWhite} >PORTAFOLIO</h4>
                             </TCardHeader>
                             <TCardBody>
                                 <Table
                                     tableHeaderColor="primary"
-                                    tableHead={["Indicador", "Real", "Proyección", "Rank Nal"]}
+                                    tableHead={["Mes", "Total", "Crecimiento"]}
                                     tableData={[
-                                    ["Colocación Total", "80%", "80%", "80%"],
-                                    ["Nuevos", "80%", "80%", ""],
-                                    ["Cobranza (EPRC)", "80%", "80%", ""],
+                                    ["Octubre", "$11,500,000", "$300,000"],
+                                    ["Noviembre", "$11,900,000", "$400,000"],
+                                    ["Diciembre", "$12,000,000", "$100,000"],
                                     ]}
                                 />
                             </TCardBody>
                         </TCard>
-                    </div>
-                    <div className={classes.specialCard}>
-                        <TCard>
+
+                </div>
+
+                <div className={classes.specialCard}>
+
+                <TCard>
                             <TCardHeader color="primary">
-                                <h4 className={classes.cardTitleWhite} >INDICADORES</h4>
+                                <h4 className={classes.cardTitleWhite} >VARIACION</h4>
                             </TCardHeader>
                             <TCardBody>
                                 <Table
                                     tableHeaderColor="primary"
-                                    tableHead={["Indicador", "Real", "Proyección", "Rank Nal"]}
+                                    tableHead={["Mes", "Clientes", "Variacion"]}
                                     tableData={[
-                                    ["Colocación Total", "80%", "80%", "80%"],
-                                    ["Nuevos", "80%", "80%", ""],
-                                    ["Cobranza (EPRC)", "80%", "80%", ""],
+                                    ["Octubre", "990", "10"],
+                                    ["Noviembre", "1,050", "60"],
+                                    ["Diciembre", "1,000", "-50"],
                                     ]}
                                 />
                             </TCardBody>
                         </TCard>
-                    </div>
-                </GridList>
-            </div>
+                    
+                </div>
+                
+                        
+            </GridList>
+
             {/* <div>
                 <Grid container xs={12}>
                     <Grid item>
@@ -463,7 +423,155 @@ function QuickStart(){
                     </GridList>
                 </div>
             </div>
+
+
+
+
             <div className={classes.subtitleDiv}>INDICADORES DE GESTIÓN</div>
+            <GridList className={classes.gridListProbe} cols={2.5}>
+                    <div className={classes.specialCard}>
+                        <TCard>
+                            <TCardHeader color="primary">
+                                <h4 className={classes.cardTitleWhite} >PLANTILLAS</h4>
+                            </TCardHeader>
+                            <TCardBody>
+                                <Table
+                                    tableHeaderColor="primary"
+                                    tableHead={["Ejecutivos", "Autorizado", "Activo"]}
+                                    tableData={[
+                                    ["Credito", "", ""],
+                                    ["Promocion", "", ""],
+                                    ["Cobranza", "", ""],
+                                    ]}
+                                />
+                            </TCardBody>
+                        </TCard>
+                    </div>
+                    <div className={classes.specialCard}>
+                        <TCard>
+                            <TCardHeader color="primary">
+                                <h4 className={classes.cardTitleWhite} >CAMPANAS</h4>
+                            </TCardHeader>
+                            <TCardBody>
+                                <Table
+                                    tableHeaderColor="primary"
+                                    tableHead={["Campanas", "Solicitudes", "Convertidos", "% Conversion"]}
+                                    tableData={[
+                                    ["Landing", "5", "3", "50.0%"],
+                                    ["Findep Movil", "30", "2", "6.7%"],
+                                    ]}
+                                />
+                            </TCardBody>
+                        </TCard>
+                    </div>
+                    <div className={classes.specialCard}>
+                        <TCard>
+                            <TCardHeader color="primary">
+                                <h4 className={classes.cardTitleWhite} >FINDEP MOVIL</h4>
+                            </TCardHeader>
+                            <TCardBody>
+                                <Table
+                                    tableHeaderColor="primary"
+                                    tableHead={["Ejecutivos", "Findep Movil"]}
+                                    tableData={[
+                                    ["Promociom Activos", "4"],
+                                    ["Creditos Activos", "3"],
+                                    ["Promocion", "7"],
+                                    ["Solicitud", "3"],
+                                    ["Solicitudes/Promociones", "0.4"],
+                                    ]}
+                                />
+                            </TCardBody>
+                        </TCard>
+                    </div>
+                </GridList>
+            
+
+            {
+                    /**
+                     * <Grid 
+            container
+            direction="row"
+            justify="space-evenly"
+            alignItems="start">
+
+                <Grid>
+                    <TCard>
+                    <TCardHeader color="primary">
+                        <h4 className={classes.cardTitleWhite} >PLANTILLAS</h4>
+                    </TCardHeader>
+                    <TCardBody>
+                        <Table
+                        tableHeaderColor="primary"
+                        tableHead={["Ejecutivos", "Autorizado", "Activo"]}
+                        tableData={[
+                            ["Credito", "", ""],
+                            ["Promocion", "", ""],
+                            ["Cobranza", "", ""],
+                        ]}/>
+                    </TCardBody>
+                </TCard>
+
+                </Grid>
+                
+                <Grid>
+                <TCard>
+                    <TCardHeader color="primary">
+                        <h4 className={classes.cardTitleWhite} >CAMPANAS</h4>
+                    </TCardHeader>
+                    <TCardBody>
+                        <Table
+                        tableHeaderColor="primary"
+                        tableHead={["Campanas", "Solicitudes", "Convertidos", "% Conversion"]}
+                        tableData={[
+                            ["Landing", "5", "3", "50.0%"],
+                            ["Findep Movil", "30", "2", "6.7%"],
+                        ]}/>
+                    </TCardBody>
+                </TCard>
+                </Grid>
+
+                <Grid>
+                <TCard>
+                    <TCardHeader color="primary">
+                        <h4 className={classes.cardTitleWhite} >FINDEP MOVIL</h4>
+                    </TCardHeader>
+                    <TCardBody>
+                        <Table
+                        tableHeaderColor="primary"
+                        tableHead={["Ejecutivos", "Findeo Movil"]}
+                        tableData={[
+                            ["Promocion activos", "4"],
+                            ["Creditos Activos", "3"],
+                            ["Promocion", "7"],
+                            ["Solicitud", "3"],
+                            ["Solicitud/Promocion", "0.4"],
+                        ]}/>
+                    </TCardBody>
+                </TCard>
+                </Grid>
+            
+            </Grid>
+                     */
+            }
+
+
+
+
+            {
+                            /*
+                            
+            
+                            */
+                        }
+
+
+
+
+
+
+
+
         </div>
     )
 }
