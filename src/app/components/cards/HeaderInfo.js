@@ -78,13 +78,13 @@ const HeaderInfo = () => {
                 <Card>
                     <CardHeader
                         className={classes.cardBannerTitle}
-                        title={<Typography variant='subtitle1'>Dias habiles: 22 dias</Typography>} />
+                        title={<Typography variant='subtitle1'>Días hábiles: 22 dias</Typography>} />
                 </Card>
 
                 <Card>
                     <CardHeader
                         className={classes.cardBannerTitle}
-                        title={<Typography variant='subtitle1'>Dias transcurridos: 10</Typography>} />
+                        title={<Typography variant='subtitle1'>Días transcurridos: 10</Typography>} />
 
                 </Card>
 

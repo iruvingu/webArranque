@@ -404,7 +404,7 @@ function QuickStart({ branchSelected }){
                             <TCardBody>
                                 <Table
                                     tableHeaderColor="primary"
-                                    tableHead={["Indicador", "Real", "Proyección", "Rank Nal"]}
+                                    tableHead={["Indicador", "Real", "Proyección", "Rank Nal."]}
                                     tableData={[
                                     ["Colocación Total", branchSelected[0].cards.General.col_total_real, branchSelected[0].cards.General.col_total_proy, branchSelected[0].cards.General.total_rank],
                                     ["Nuevos", branchSelected[0].cards.General.new_real, branchSelected[0].cards.General.new_proy, branchSelected[0].cards.General.new_rank],
@@ -518,6 +518,10 @@ function QuickStart({ branchSelected }){
                     </GridList>
                 </div>
             </div>
+
+
+
+
             <div className={classes.subtitleDiv}>INDICADORES DE GESTIÓN</div>
             <GridList className={classes.gridListProbe} cols={2.5}>
                     <div className={classes.specialCard}>
