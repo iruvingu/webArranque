@@ -171,11 +171,12 @@ const useStyles = makeStyles(theme => ({
     specialCard: {
         margin: theme.spacing(1),
         height: "auto",
-        with: '400px',
+        width: '400px',
         height: 'auto',
+        minWidth: '350px'
     },
     spinner: {
-        with: "100%",
+        width: "100%",
         height: "100%",
         display: "flex",
         justifyContent: 'center',
