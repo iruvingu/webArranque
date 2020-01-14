@@ -1,15 +1,27 @@
 import React from 'react';
 import { ResponsiveBar } from '@nivo/bar'
+import { connect } from 'react-redux'
+import { firestoreConnect } from 'react-redux-firebase'
+import { compose } from 'redux'
 
-const GraphicEPRC = ({data}) => (
-    <ResponsiveBar
-            data={data}
-            keys={[ 'proyeccion' ]}
-            indexBy="day"
+const GraphicEPRC = ({ sucursalId, eprcChartData }) =>{
+
+    const transformObject = eprcData => {
+        return Object.keys(eprcData);
+    }
+
+    return (!eprcChartData)
+    ?   null
+    :
+    (<ResponsiveBar
+            data={Object.values(eprcChartData)}
+            keys={[ 'Cierre', 'Meta' ]}
+            indexBy="Dia"
             maxValue={600000}
             margin={{ top: 50, right: 10, bottom: 50, left: 70 }}
             padding={0.2}
             colors={{ scheme: 'nivo' }}
+            enableLabel={false}
             markers={[
                 {
                     axis: 'y',
@@ -95,6 +107,19 @@ const GraphicEPRC = ({data}) => (
             motionStiffness={90}
             motionDamping={15}
         />
-)
+    )
+}
 
-export default GraphicEPRC;
+export default compose(
+	firestoreConnect( ({ sucursalId }) => [
+        {
+            collection: 'indicadores_graficas',
+            doc: sucursalId,
+            subcollections: [{ collection: 'indicadores', doc: "Eprc" }],
+            storeAs: 'eprcChartData'
+        }
+    ]),
+	connect((state, props) => ({
+		eprcChartData: state.firestore.data.eprcChartData
+	}))
+)(GraphicEPRC);

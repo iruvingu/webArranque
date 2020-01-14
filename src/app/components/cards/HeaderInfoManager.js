@@ -47,7 +47,7 @@ const useStyles = makeStyles(theme => ({
 })
 );
 
-const HeaderInfoManager = () => {
+const HeaderInfoManager = ({ branchName }) => {
     const classes = useStyles()
     return (
         <div className={classes.subtitleDiv}>
@@ -56,7 +56,7 @@ const HeaderInfoManager = () => {
                   justify="space-between"
                   alignItems="center">
                 <Grid item xs={4}>
-                    <div className={classes.textLeft}>SUC: TOLUCA, PILARES</div>
+                    <div className={classes.textLeft}>SUC: {branchName}</div>
                 </Grid>
 
                 <Grid item xs={4}>

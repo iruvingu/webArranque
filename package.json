@@ -27,7 +27,8 @@
     "react-swipeable-views": "^0.13.3",
     "redux": "^4.0.4",
     "redux-devtools-extension": "^2.13.8",
-    "redux-firestore": "^0.10.0"
+    "redux-firestore": "^0.10.0",
+    "reduxsauce": "^1.1.1"
   },
   "scripts": {
     "start": "react-scripts start",

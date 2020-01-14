@@ -61,7 +61,8 @@ function QuickStartCard(props) {
 
     if (!props) return (<Spinner />)
 
-    const { id, title, meta, proyection, percentProy, difference, dailyDifference, factor } = props
+    const { id, title, meta, proyection, percentProy, difference, dailyDifference, 
+        factor, real, factorRealMoney, advanceVsMeta, cumpProy, factorProyMoney } = props
 
     function Circle({color}) {
         switch(color) {
@@ -107,45 +108,80 @@ function QuickStartCard(props) {
                     {
                         (meta)
                             ?   <Grid item xs={12} sm={6}>
-                                    <CardSubContent id color={""} value={meta} nameValue={"Meta"} />
+                                    <CardSubContent id={"meta"} color={""} value={meta} nameValue={"Meta"} />
                                 </Grid>
                             :   null
                     }
                     {
                         (proyection)
                             ?   <Grid item xs={12} sm={6}>
-                                    <CardSubContent id color={"green"} value={proyection} nameValue={"Proyección"} />
+                                    <CardSubContent id={"proy"} color={"green"} value={proyection} nameValue={"Proyección"} />
                                 </Grid>
                             :   null
                     }
                     {
                         (percentProy)
                             ?   <Grid item xs={12} sm={6}>
-                            <CardSubContent id color={"yellow"} value={percentProy} nameValue={"%proyección"} />
+                            <CardSubContent id={"perProy"} color={"yellow"} value={percentProy} nameValue={"%proyección"} />
                         </Grid>
                             :   null
                     }
                     {
                         (difference)
                             ?   <Grid item xs={12} sm={6}>
-                            <CardSubContent id color={"red"} value={difference} nameValue={"Diferencia"} />
+                            <CardSubContent id={"dif"} color={"red"} value={difference} nameValue={"Diferencia"} />
                         </Grid>
                             :   null
                     }
                     {
                         (dailyDifference)
                             ?   <Grid item xs={12} sm={6}>
-                                    <CardSubContent id color={"red"} value={dailyDifference} nameValue={"Promedio diferencia diaria"} />
+                                    <CardSubContent id={"dayDif"} color={"yellow"} value={dailyDifference} nameValue={"Promedio diferencia diaria"} />
                                 </Grid>
                             :   null
                     }
                     {
                         (factor)
                             ?   <Grid item xs={12} sm={6}>
-                                    <CardSubContent id color={"red"} value={factor} nameValue={"Factor"} />
+                                    <CardSubContent id={"factor"} color={"red"} value={factor} nameValue={"Factor"} />
                                 </Grid>
                             :   null
-                    } 
+                    }
+                    {
+                        (real)
+                            ?   <Grid item xs={12} sm={6}>
+                                    <CardSubContent id={"real"} color={"yellow"} value={real} nameValue={"Real"} />
+                                </Grid>
+                            :   null
+                    }
+                    {
+                        (factorRealMoney)
+                            ?   <Grid item xs={12} sm={6}>
+                                    <CardSubContent id={"factorRealMoney"} color={"red"} value={factorRealMoney} nameValue={"Factor Real Incentivo"} />
+                                </Grid>
+                            :   null
+                    }
+                    {
+                        (advanceVsMeta)
+                            ?   <Grid item xs={12} sm={6}>
+                                    <CardSubContent id={"advanceVsMeta"} color={"yellow"} value={advanceVsMeta} nameValue={"Avance VS Meta"} />
+                                </Grid>
+                            :   null
+                    }
+                    {
+                        (cumpProy)
+                            ?   <Grid item xs={12} sm={6}>
+                                    <CardSubContent id={"cumpProy"} color={"yellow"} value={cumpProy} nameValue={"Cump Proy"} />
+                                </Grid>
+                            :   null
+                    }
+                    {
+                        (factorProyMoney)
+                            ?   <Grid item xs={12} sm={6}>
+                                    <CardSubContent id={"factorProyMoney"} color={"green"} value={factorProyMoney} nameValue={"Factor Proy Incentivo"} />
+                                </Grid>
+                            :   null
+                    }
                 </Grid>
                 </CardContent>
                 

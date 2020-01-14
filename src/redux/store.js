@@ -6,6 +6,11 @@ import { reduxFirestore, firestoreReducer } from 'redux-firestore'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 
+/**
+ * reducers
+ */
+import { selectBranchReducer } from './ducks/branchSelected'
+
 // firebase config file
 import firebaseConfig from '../firebase/firebaseConfigDev'
 
@@ -28,7 +33,8 @@ export const configStore = (initialState, history) => {
 	// reducers
 	const rootReducer = combineReducers({
 		firebase: firebaseReducer,
-		firestore: firestoreReducer
+		firestore: firestoreReducer,
+		branchSelected: selectBranchReducer
     })
 
     const middlewares = [routerMiddleware(history)]
