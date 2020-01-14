@@ -331,24 +331,9 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-function QuickStart({ sucursales }){
+function QuickStart({ branchSelected }){
 
     const classes = useStyles()
-
-    const [sucursalId, setSucursalId] = React.useState('')
-    const [open, setOpen] = React.useState(false);
-
-    const handleChange = event => {
-        setSucursalId(event.target.value);
-      };
-    
-      const handleClose = () => {
-        setOpen(false);
-      };
-    
-      const handleOpen = () => {
-        setOpen(true);
-      };
 
     function filterSucursales(values) {
         return values.filter(value => value.info !== "")
@@ -358,37 +343,13 @@ function QuickStart({ sucursales }){
     let bannerCardTitle2 = '22'
     let bannerCardTitle3 = '10' 
 
+    console.log(branchSelected)
 
-    return((!sucursales)
+    return(
+        (!branchSelected)
         ?   <div className={classes.spinner}><Spinner /></div>  
     :   <div className={classes.root}>
-        <HeaderInfoManager/>
-            {/* <div>
-                    <FormControl variant='filled' className={classes.formControl}>
-                        <InputLabel id="sucursalId"><div className={classes.backG}>Sucursal</div></InputLabel>
-                        <Select
-                        labelId="sucursal"
-                        id="open-select-sucursal"
-                        open={open}
-                        onClose={handleClose}
-                        onOpen={handleOpen}
-                        value={sucursalId}
-                        onChange={handleChange}
-                        >
-                        <MenuItem value="">
-                            <em>None</em>
-                        </MenuItem>
-                        {
-                            sucursales
-                                .map(sucursal => {
-                                     return (sucursal.Info)
-                                        ?   <MenuItem value={sucursal.id}>{sucursal.Info.nombreSucursal}</MenuItem>
-                                        :   null
-                                })
-                        }
-                        </Select>
-                    </FormControl>
-                </div> */}
+        <HeaderInfoManager branchName={branchSelected[0].Info.nombreSucursal} />
             <Paper className={classes.bannerPaper}>
                 <Grid container xs={12} >
                     <Grid container xs={12} spacing={3}>
@@ -396,39 +357,39 @@ function QuickStart({ sucursales }){
                         <Typography variant='h6'><div style={{color: "#fff"}}>FISA NM - MEDIANA</div></Typography>
                         </Grid>
                         <Grid item xs={12} sm={6} md={3}>
-                            <Paper className={classes.paper2}>Días Hábiles: 22</Paper>
+                            <Paper className={classes.paper2}>Días Hábiles: {branchSelected[0].cards.General.work_days}</Paper>
                         </Grid>
                         <Grid item xs={12} sm={6} md={3}>
-                            <Paper className={classes.paper2}>Días transcurridos: 10</Paper>
+                            <Paper className={classes.paper2}>Días transcurridos: {branchSelected[0].cards.General.elapsed_days}</Paper>
                         </Grid>
                         <Grid item xs={12} sm={6} md={3}>
-                            <Paper className={classes.paper2}>% ACELERADOR: 80%</Paper>
+                            <Paper className={classes.paper2}>% ACELERADOR: {branchSelected[0].cards.General.ascelerador}%</Paper>
                         </Grid>
                     </Grid>
                     <Grid className={classes.gridItemMargin} container xs={12} spacing={1}>
                         <Grid item xs={6} sm={2} md={2}>
-                            <div style={{color: "#fff"}}>PREVIO: </div>
+                            <div style={{color: "#fff"}}>PREVIO: {branchSelected[0].cards.General.color_prev}</div>
                         </Grid>
                         <Grid item xs={6} sm={2} md={2}>
-                            <div style={{color: "#fff"}}>ACTUAL: </div>
+                            <div style={{color: "#fff"}}>ACTUAL: {branchSelected[0].cards.General.color_today} </div>
                         </Grid>
                         <Grid item xs={6} sm={2} md={2}>
-                            <div style={{color: "#fff"}}>PROYECTA: </div>
+                            <div style={{color: "#fff"}}>PROYECTA: {branchSelected[0].cards.General.color_proy} </div>
                         </Grid>
                         <Grid item xs={6} sm={2} md={2}>
-                            <div style={{color: "#fff"}}>Azul-Verde: </div>
+                            <div style={{color: "#fff"}}>Azul-Verde: {branchSelected[0].cards.General.blue_green} </div>
                         </Grid>
                         <Grid item xs={6} sm={2} md={2}>
-                            <div style={{color: "#fff"}}>Amarillo,Verde,Rojo: </div>
+                            <div style={{color: "#fff"}}>Amarillo,Verde,Rojo: {branchSelected[0].cards.General.orange_red} </div>
                         </Grid>
                         <Grid item xs={6} sm={2} md={2}>
-                            <div style={{color: "#fff"}}>Sin Pago: </div>
+                            <div style={{color: "#fff"}}>Sin Pago: {branchSelected[0].cards.General.without_pay} </div>
                         </Grid>
                         <Grid item xs={6} sm={2} md={2}>
-                            <div style={{color: "#fff"}}>Total nuevos: </div>
+                            <div style={{color: "#fff"}}>Total nuevos: {branchSelected[0].cards.General.total} </div>
                         </Grid>
                         <Grid item xs={6} sm={2} md={2}>
-                            <div style={{color: "#fff"}}>Riesgo: Bajo</div>
+                            <div style={{color: "#fff"}}>Riesgo: {branchSelected[0].cards.General.risk_points}</div>
                         </Grid>
                     </Grid>
                 </Grid>
@@ -445,9 +406,9 @@ function QuickStart({ sucursales }){
                                     tableHeaderColor="primary"
                                     tableHead={["Indicador", "Real", "Proyección", "Rank Nal"]}
                                     tableData={[
-                                    ["Colocación Total", "80%", "80%", "80%"],
-                                    ["Nuevos", "80%", "80%", ""],
-                                    ["Cobranza (EPRC)", "80%", "80%", ""],
+                                    ["Colocación Total", branchSelected[0].cards.General.col_total_real, branchSelected[0].cards.General.col_total_proy, branchSelected[0].cards.General.total_rank],
+                                    ["Nuevos", branchSelected[0].cards.General.new_real, branchSelected[0].cards.General.new_proy, branchSelected[0].cards.General.new_rank],
+                                    ["Cobranza (EPRC)", branchSelected[0].cards.General.cob_real, branchSelected[0].cards.General.cob_proy, branchSelected[0].cards.General.eprc_rank],
                                     ]}
                                 />
                             </TCardBody>
@@ -466,9 +427,9 @@ function QuickStart({ sucursales }){
                                     tableHeaderColor="primary"
                                     tableHead={["Mes", "Total", "Crecimiento"]}
                                     tableData={[
-                                    ["Octubre", "$11,500,000", "$300,000"],
-                                    ["Noviembre", "$11,900,000", "$400,000"],
-                                    ["Diciembre", "$12,000,000", "$100,000"],
+                                    ["Octubre", branchSelected[0].cards.General.current_month, branchSelected[0].cards.General.current_variation],
+                                    ["Noviembre", branchSelected[0].cards.General.past_month, branchSelected[0].cards.General.past_variation],
+                                    ["Diciembre", branchSelected[0].cards.General.two_past_month, branchSelected[0].cards.General.two_past_variation],
                                     ]}
                                 />
                             </TCardBody>
@@ -487,9 +448,9 @@ function QuickStart({ sucursales }){
                                     tableHeaderColor="primary"
                                     tableHead={["Mes", "Clientes", "Variacion"]}
                                     tableData={[
-                                    ["Octubre", "990", "10"],
-                                    ["Noviembre", "1,050", "60"],
-                                    ["Diciembre", "1,000", "-50"],
+                                    ["Octubre", branchSelected[0].cards.General.past_clients, branchSelected[0].cards.General.current_variation_clients],
+                                    ["Noviembre",branchSelected[0].cards.General.current_clients, branchSelected[0].cards.General.past_variation_clients],
+                                    ["Diciembre", branchSelected[0].cards.General.two_past_clients, branchSelected[0].cards.General.two_past_variation_clients],
                                     ]}
                                 />
                             </TCardBody>
@@ -505,16 +466,16 @@ function QuickStart({ sucursales }){
             </div>
             <div className={classes.singleLineGrid}>
                 <GridList className={classes.gridList} cols={2.5}>
-                    {tileData.map(tile => (
+                    {Object.values(branchSelected[0].cards.Banner).map((card, index) => (
                             <QuickStartCard
-                            id={tile.id}
-                            title={tile.title}
-                            meta={tile.meta}
-                            proyection={tile.proyection}
-                            percentProy={tile.percentProy}
-                            difference={tile.difference}
-                            dailyDifference={tile.dailyDifference}
-                            factor={tile.factor} />      
+                            id={index}
+                            title={Object.keys(branchSelected[0].cards.Banner)[index]}
+                            meta={card.goal}
+                            proyection={card.proy}
+                            percentProy={card.advance_proy}
+                            difference={card.dif}
+                            dailyDifference={card.daili_dif}
+                            factor={card.factor} />      
                     ))}
                 </GridList>
             </div>
@@ -523,19 +484,16 @@ function QuickStart({ sucursales }){
             </div>
             <div>
                 <div className={classes.singleLineGrid}>
-                <GridList className={classes.gridList} cols={2.5}>
-                    {tileData2.map(tile => (
-                        <QuickStartCard
-                        id={tile.id}
-                        title={tile.title}
-                        meta={tile.meta}
-                        proyection={tile.proyection}
-                        percentProy={tile.percentProy}
-                        difference={tile.difference}
-                        dailyDifference={tile.dailyDifference}
-                        factor={tile.factor}
-                    />
-                        
+                    <GridList className={classes.gridList} cols={2.5}>
+                        {Object.values(branchSelected[0].cards.Colocacion).map((card, index) => (
+                            <QuickStartCard
+                            id={index}
+                            title={Object.keys(branchSelected[0].cards.Colocacion)[index]}
+                            meta={card.goal}
+                            proyection={card.proy}
+                            percentProy={card.advance_proy}
+                            real={card.real}
+                            factorRealMoney={card.factor} />      
                     ))}
                     </GridList>
                 </div>
@@ -546,18 +504,16 @@ function QuickStart({ sucursales }){
             <div>
                 <div className={classes.singleLineGrid}>
                 <GridList className={classes.gridList} cols={2.5}>
-                    {tileData.map(tile => (
-                        <QuickStartCard
-                        id={tile.id}
-                        title={tile.title}
-                        meta={tile.meta}
-                        proyection={tile.proyection}
-                        percentProy={tile.percentProy}
-                        difference={tile.difference}
-                        dailyDifference={tile.dailyDifference}
-                        factor={tile.factor}
-                    />
-                        
+                    {Object.values(branchSelected[0].cards.Cobranza).map((card, index) => (
+                            <QuickStartCard
+                            id={index}
+                            title={Object.keys(branchSelected[0].cards.Cobranza)[index]}
+                            meta={card.goal}
+                            proyection={card.proy}
+                            cumpProy={card.advance_proy}
+                            advanceVsMeta={card.advance}
+                            real={card.real}
+                            factorProyMoney={card.factor} />      
                     ))}
                     </GridList>
                 </div>
@@ -620,81 +576,10 @@ function QuickStart({ sucursales }){
                         </TCard>
                     </div>
                 </GridList>
-            <div className={classes.estatusCards}>
-                <div className={classes.estatusGrid}>
-                    <GridList className={classes.gridList} cols={2.5}>
-                        <div className={classes.specialCard}>
-                            <TCard>
-                                <TCardHeader color="primary">
-                                    <h4 className={classes.cardTitleWhite} >PLANTILLAS</h4>
-                                </TCardHeader>
-                                <TCardBody>
-                                    <Table
-                                        tableHeaderColor="primary"
-                                        tableHead={["Ejecutivos", "Autorizado", "Activo"]}
-                                        tableData={[
-                                        ["Credito", "80%", "80%"],
-                                        ["Promoción", "80%", "80%"],
-                                        ["Cobranza", "80%", "80%"],
-                                        ]}
-                                    />
-                                </TCardBody>
-                            </TCard>
-                        </div>
-                        <div  className={classes.specialCard}>
-                            <TCard>
-                                <TCardHeader color="primary">
-                                    <h4 className={classes.cardTitleWhite} >CAMPAÑAS</h4>
-                                </TCardHeader>
-                                <TCardBody>
-                                    <Table
-                                        tableHeaderColor="primary"
-                                        tableHead={["Campaña", "Solicitudes", "Convertidos", "%Conversión"]}
-                                        tableData={[
-                                        ["Landing", "5", "3", "50.0%"],
-                                        ["Findep Móvil", "30", "2", "6.7%"],
-                                        ]}
-                                    />
-                                </TCardBody>
-                            </TCard>
-                        </div>
-                        <div className={classes.specialCard}>
-                            <TCard>
-                                <TCardHeader color="primary">
-                                    <h4 className={classes.cardTitleWhite} >FINDEP MOVIL</h4>
-                                </TCardHeader>
-                                <TCardBody>
-                                    <Table
-                                        tableHeaderColor="primary"
-                                        tableHead={["Ejecutivos", "Findep Móvil"]}
-                                        tableData={[
-                                        ["Promoción activos", "4"],
-                                        ["Créditos activos", "3"],
-                                        ["Promoción", "7"],
-                                        ["Solicitud", "3"],
-                                        ["Solicitudes/Promoción", "7"],
-                                        ]}
-                                    />
-                                </TCardBody>
-                            </TCard>
-                        </div>
-                    </GridList>
-                </div>
-            </div>
         </div>
     )
 }
 
-export default /* compose(
-    firestoreConnect([
-        {
-            collection: 'app_indicadores',
-            doc: 'FINDEP',
-            subcollections: [{ collection: 'indicadores_sucursal' }],
-            storeAs: 'sucursales'
-        }
-    ]),
-    connect((state, props) => ({
-        sucursales: state.firestore.ordered.sucursales
-    }))
-) */(QuickStart)
+export default connect((state, props) => ({
+        branchSelected: state.branchSelected.branchOffice
+    }))(QuickStart)
