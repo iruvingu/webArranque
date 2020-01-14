@@ -80,10 +80,12 @@ function Home({ subdirections, regions, branches, selectBranchOffice, branchSele
 			let value = event.target.value;
 			setSucursalId(value)
 
-			let selectedBranch = branches.filter(branch => branch.id === value)
+			if(value) {
+				let selectedBranch = branches.filter(branch => branch.id === value)
 
-			// select sucursal
-			selectBranchOffice(selectedBranch)
+				// select sucursal
+				selectBranchOffice(selectedBranch)
+			}
 		}
 		const handleOpen = number => {
 			switch(number) {

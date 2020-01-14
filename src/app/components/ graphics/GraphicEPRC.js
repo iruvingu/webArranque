@@ -15,9 +15,9 @@ const GraphicEPRC = ({ sucursalId, eprcChartData }) =>{
     :
     (<ResponsiveBar
             data={Object.values(eprcChartData)}
-            keys={[ 'Cierre', 'Meta' ]}
+            keys={[ 'Cierre' ]}
             indexBy="Dia"
-            maxValue={600000}
+            maxValue={1000000}
             margin={{ top: 50, right: 10, bottom: 50, left: 70 }}
             padding={0.2}
             colors={{ scheme: 'nivo' }}
@@ -25,7 +25,7 @@ const GraphicEPRC = ({ sucursalId, eprcChartData }) =>{
             markers={[
                 {
                     axis: 'y',
-                    value: 500000,
+                    value: 700000,
                     lineStyle: { stroke: '#191461', strokeWidth: 2 },
                     legend: 'META',
                     legendOrientation: 'vertical',

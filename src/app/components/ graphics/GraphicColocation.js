@@ -8,8 +8,6 @@ const GraphicColocation = ({ sucursalId, colocationChartData}) => {
 
 	const [value, setValue] = useState(800000)
 
-	
-
 	return (!colocationChartData)
 	?	null
 	:
@@ -18,7 +16,7 @@ const GraphicColocation = ({ sucursalId, colocationChartData}) => {
 		data={Object.values(colocationChartData)}
 		keys={['monto_revolvencia', 'monto_total_nuevos', 'monto_total_renovados']}
 		indexBy="Dia"
-		maxValue={2500000}
+		maxValue={1000000}
 		margin={{ top: 50, right: 10, bottom: 50, left: 70 }}
 		padding={0.2}
 		colors={{ scheme: 'category10' }}
@@ -92,16 +90,16 @@ const GraphicColocation = ({ sucursalId, colocationChartData}) => {
 		labelSkipWidth={12}
 		labelSkipHeight={12}
 		labelTextColor={{ from: 'color', modifiers: [['darker', 1.6]] }}
-		legends={[
+		/* legends={[
 			{
 				dataFrom: 'keys',
 				anchor: 'bottom',
-				direction: 'row',
+				direction: 'column',
 				justify: false,
 				translateX: 20,
-				translateY: 50,
+				translateY: 80,
 				itemsSpacing: 2,
-				itemWidth: 100,
+				itemWidth: 150,
 				itemHeight: 20,
 				itemDirection: 'left-to-right',
 				itemOpacity: 0.85,
@@ -115,7 +113,7 @@ const GraphicColocation = ({ sucursalId, colocationChartData}) => {
 					}
 				]
 			}
-		]}
+		]} */
 		animate={true}
 		motionStiffness={90}
 		motionDamping={15}
