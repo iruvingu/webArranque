@@ -1,5 +1,5 @@
 import React from 'react';
-import {makeStyles} from "@material-ui/core";
+import {makeStyles, Typography} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles(theme => ({
@@ -13,58 +13,24 @@ const useStyles = makeStyles(theme => ({
         paddingLeft:'30px',
         paddingRight:'30px'
     },
-    textCenter:{
-        fontFamily: 'Roboto',
-        fontSize: '18px',
-        fontWeight: 'bold',
-        fontStretch: 'normal',
-        fontStyle: 'normal',
-        lineHeight: '1.33',
-        letterSpacing: 'normal',
-        textAlign: 'center',
-    },
-    textLeft:{
-        fontFamily: 'Roboto',
-        fontSize: '18px',
-        fontWeight: 'bold',
-        fontStretch: 'normal',
-        fontStyle: 'normal',
-        lineHeight: '1.33',
-        letterSpacing: 'normal',
-        textAlign: 'start',
-    },
-    textRight:{
-        fontFamily: 'Roboto',
-        fontSize: '18px',
-        fontWeight: 'bold',
-        fontStretch: 'normal',
-        fontStyle: 'normal',
-        lineHeight: '1.33',
-        letterSpacing: 'normal',
-        textAlign: 'end',
-    }
-
 })
 );
 
-const HeaderInfoManager = ({ branchName }) => {
+const HeaderInfoManager = ({ branchName, managerName, timeDue }) => {
     const classes = useStyles()
     return (
         <div className={classes.subtitleDiv}>
-            <Grid container
-                  direction="row"
-                  justify="space-between"
-                  alignItems="center">
-                <Grid item xs={4}>
-                    <div className={classes.textLeft}>SUC: {branchName}</div>
+            <Grid container>
+                <Grid item xs={12} sm={6} md={4}>
+                    <Typography variant='h6' >SUC: {branchName}</Typography>
                 </Grid>
 
-                <Grid item xs={4}>
-                    <div className={classes.textCenter}>GERENTE: ENRIQUE SANGENIS</div>
+                <Grid item xs={12} sm={6} md={4}>
+                    <Typography variant='h6' >GERENTE: {(managerName) ? managerName : "No disponible"}</Typography>
                 </Grid>
 
-                <Grid item xs={4}>
-                    <div className={classes.textRight}>ANTIGUEDAD: 7 MESES</div>
+                <Grid item xs={12} sm={6} md={4}>
+                    <Typography variant='h6' >ANTIGUEDAD: {(timeDue) ? timeDue : "No disponible"}</Typography>
                 </Grid>
 
             </Grid>

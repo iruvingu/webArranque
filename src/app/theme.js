@@ -38,6 +38,13 @@ const theme = createMuiTheme({
             main: red[700],
             dark: red[900],
             contrastText: "#ffffff",
+        },
+        colorIndicator: {
+            gray: '#b4b4b4',
+            red: '#ca1313',
+            yellow: '#f5c11b',
+            green: '#5ab81d',
+            blue: '#c5cee0',
         }
     }
 })
