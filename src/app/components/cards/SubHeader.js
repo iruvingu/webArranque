@@ -43,7 +43,7 @@ export default function SubHeader({ General }){
 
     const [noUnable, setNoUnable] = useState("No disponible")
 
-    const { work_days, elapsed_days, ascelerador, color_prev, color_proy, color_today, blue_green, 
+    const { title, work_days, elapsed_days, ascelerador, color_prev, color_proy, color_today, blue_green, 
         orange_red, without_pay, total, risk_points } = General
     
     const classes = useStyles()
@@ -68,13 +68,14 @@ export default function SubHeader({ General }){
                     </Grid>
                     <Grid className={classes.gridItemMargin} container xs={12} spacing={1}>
                         <Grid item xs={6} sm={2} md={2}>
-                            <div className={classes[color_prev]}>PREVIO: {(color_prev) ? color_prev : noUnable}</div>
+                            <Typography><div className={classes[color_prev]}>PREVIO: {(color_prev) ? color_prev : noUnable}</div></Typography>
+                            
                         </Grid>
                         <Grid item xs={6} sm={2} md={2}>
-                            <div className={classes[color_today]}>ACTUAL: {(color_today) ? color_today : noUnable} </div>
+                            <Typography><div className={classes[color_today]}>ACTUAL: {(color_today) ? color_today : noUnable} </div></Typography>
                         </Grid>
                         <Grid item xs={6} sm={2} md={2}>
-                            <div className={classes[color_proy]}>PROYECTA: {(color_proy) ? color_proy : noUnable} </div>
+                        <Typography><div className={classes[color_proy]}>PROYECTA: {(color_proy) ? color_proy : noUnable} </div></Typography>
                         </Grid>
                         <Grid item xs={6} sm={2} md={2}>
                             <div className={classes.WHITE}>Azul-Verde: {(blue_green) ? blue_green : noUnable} </div>

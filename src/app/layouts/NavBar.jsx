@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
       zIndex: "1029",
       color: theme.palette.extra.grayColor,
       border: "0",
-      borderRadius: "3px",
+      borderRadius: "0px",
       padding: "10px 0",
       transition: "all 150ms ease 0s",
       minHeight: "50px",

@@ -166,15 +166,15 @@ const useStyles = makeStyles(theme => ({
         overflowScrolling: "touch"
     },
     imageRoot: {
-		textAlign: 'center'
+      textAlign: 'center',
     },
     image: {
-		height: '100%',
-		width: '100%'
+      height: '100%',
+      width: '100%'
     }
 }))
 
-const LogoImage = () => <SVG src="/icons/logo_white.svg" />;
+const LogoImage = () => <SVG src="/icons/3force.svg" />;
 
 function SideBar(props) {
 
@@ -274,7 +274,7 @@ function SideBar(props) {
               {appName}
               <div className={classes.sidebarWrapper}>{links}</div>
 			  <div className={classes.imageRoot}>
-			  	<img src="/icons/fuerza.png" />
+			  	<img src="/icons/logo_3force.png" />
 			  </div>
             </Drawer>
           </Hidden>

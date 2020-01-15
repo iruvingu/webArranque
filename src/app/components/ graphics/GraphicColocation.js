@@ -6,7 +6,16 @@ import { compose } from 'redux'
 
 const GraphicColocation = ({ sucursalId, colocationChartData}) => {
 
-	const [value, setValue] = useState(800000)
+	const [value, setValue] = useState(0)
+	const [value2, setValue2] = useState(0)
+
+	useEffect(() => {
+		if(colocationChartData){
+			setValue(Object.values(colocationChartData)[0].meta_monto_total)
+			setValue2(Object.values(colocationChartData)[0].meta_dia_monto_total)
+			//console.log(Object.values(colocationChartData)[0].meta_monto_total)
+		}
+	})
 
 	return (!colocationChartData)
 	?	null
@@ -16,6 +25,7 @@ const GraphicColocation = ({ sucursalId, colocationChartData}) => {
 		data={Object.values(colocationChartData)}
 		keys={['monto_revolvencia', 'monto_total_nuevos', 'monto_total_renovados']}
 		indexBy="Dia"
+		groupMode="grouped"
 		maxValue={1000000}
 		margin={{ top: 50, right: 10, bottom: 50, left: 70 }}
 		padding={0.2}
@@ -26,13 +36,13 @@ const GraphicColocation = ({ sucursalId, colocationChartData}) => {
 					axis: 'y',
 					value: value,
 					lineStyle: { stroke: '#191461', strokeWidth: 2 },
-					legend: 'Proyeccion',
+					legend: 'Meta Monto Total',
 					legendOrientation: 'horizontal',
 				},{
 					axis: 'y',
-					value: 550000,
+					value: value2,
 					lineStyle: { stroke: '#191461', strokeWidth: 2 },
-					legend: 'META',
+					legend: 'Meta Dia',
 					legendOrientation: 'horizontal',
 				}
 		]}

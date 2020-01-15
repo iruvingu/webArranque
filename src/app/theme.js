@@ -44,7 +44,7 @@ const theme = createMuiTheme({
             red: '#ca1313',
             yellow: '#f5c11b',
             green: '#5ab81d',
-            blue: '#c5cee0',
+            blue: '#37B8CC',
         }
     }
 })

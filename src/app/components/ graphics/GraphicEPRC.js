@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ResponsiveBar } from '@nivo/bar'
 import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
@@ -6,9 +6,13 @@ import { compose } from 'redux'
 
 const GraphicEPRC = ({ sucursalId, eprcChartData }) =>{
 
-    const transformObject = eprcData => {
-        return Object.keys(eprcData);
-    }
+    const [value, setValue] = useState(0)
+
+	useEffect(() => {
+		if(eprcChartData){
+			setValue(Object.values(eprcChartData)[0].Meta)
+		}
+	})
 
     return (!eprcChartData)
     ?   null
@@ -25,7 +29,7 @@ const GraphicEPRC = ({ sucursalId, eprcChartData }) =>{
             markers={[
                 {
                     axis: 'y',
-                    value: 700000,
+                    value: value,
                     lineStyle: { stroke: '#191461', strokeWidth: 2 },
                     legend: 'META',
                     legendOrientation: 'vertical',

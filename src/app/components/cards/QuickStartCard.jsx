@@ -25,19 +25,31 @@ const useStyles = makeStyles(theme => ({
     },
     circleRed: {
         borderRadius: "50%",
-        backgroundColor: "#ca1313",
+        backgroundColor: theme.palette.colorIndicator.red,
         width: 15,
         height: 15
     },
     circleYellow: {
         borderRadius: "50%",
-        backgroundColor: "#f5c11b",
+        backgroundColor: theme.palette.colorIndicator.yellow,
         width: 15,
         height: 15
     },
     circleGreen: {
         borderRadius: "50%",
-        backgroundColor: "#5ab81d",
+        backgroundColor: theme.palette.colorIndicator.green,
+        width: 15,
+        height: 15
+    },
+    circleBlue: {
+        borderRadius: "50%",
+        backgroundColor: theme.palette.colorIndicator.blue,
+        width: 15,
+        height: 15
+    },
+    circleGray: {
+        borderRadius: "50%",
+        backgroundColor: theme.palette.colorIndicator.gray,
         width: 15,
         height: 15
     },
@@ -61,19 +73,22 @@ function QuickStartCard(props) {
 
     if (!props) return (<Spinner />)
 
-    const { id, title, meta, proyection, percentProy, difference, dailyDifference, 
-        factor, real, factorRealMoney, advanceVsMeta, cumpProy, factorProyMoney } = props
+    const { id, title, meta, proyection, proyColor, percentProy, perProyColor, difference, difColor, dailyDifference, dayDifColor, 
+        factor, factorColor, real, realColor, factorRealMoney, factorRealMoneyColor, advanceVsMeta, aVSMColor, 
+        cumpProy, cumpProyColor, factorProyMoney, factorProyMoneyColor } = props
 
     function Circle({color}) {
         switch(color) {
-            case 'red': 
+            case 1: 
                 return <div className={classes.circleRed}></div>;
-            case 'yellow':
+            case 2:
                 return <div className={classes.circleYellow}></div>;
-            case 'green':
+            case 3:
                 return <div className={classes.circleGreen}></div>;
+            case 4:
+                return <div className={classes.circleBlue}></div>;
             default:
-                return null
+                return <div className={classes.circleGray}></div>;
         }
     }
 
@@ -85,7 +100,11 @@ function QuickStartCard(props) {
                     <TextField
                     InputProps={{
                         startAdornment: <InputAdornment position="start">
-                          <Circle color={color} />
+                            {
+                                (id === "meta")
+                                    ?   null
+                                    :   <Circle color={color} />
+                            }
                         </InputAdornment>,
                       }}
                     id={id}
@@ -115,70 +134,70 @@ function QuickStartCard(props) {
                     {
                         (proyection)
                             ?   <Grid item xs={12} sm={6}>
-                                    <CardSubContent id={"proy"} color={"green"} value={proyection} nameValue={"Proyección"} />
+                                    <CardSubContent id={"proy"} color={proyColor} value={proyection} nameValue={"Proyección"} />
                                 </Grid>
                             :   null
                     }
                     {
                         (percentProy)
                             ?   <Grid item xs={12} sm={6}>
-                            <CardSubContent id={"perProy"} color={"yellow"} value={percentProy} nameValue={"%proyección"} />
+                            <CardSubContent id={"perProy"} color={perProyColor} value={percentProy} nameValue={"%proyección"} />
                         </Grid>
                             :   null
                     }
                     {
                         (difference)
                             ?   <Grid item xs={12} sm={6}>
-                            <CardSubContent id={"dif"} color={"red"} value={difference} nameValue={"Diferencia"} />
+                            <CardSubContent id={"dif"} color={difColor} value={difference} nameValue={"Diferencia"} />
                         </Grid>
                             :   null
                     }
                     {
                         (dailyDifference)
                             ?   <Grid item xs={12} sm={6}>
-                                    <CardSubContent id={"dayDif"} color={"yellow"} value={dailyDifference} nameValue={"Promedio diferencia diaria"} />
+                                    <CardSubContent id={"dayDif"} color={dayDifColor} value={dailyDifference} nameValue={"Promedio diferencia diaria"} />
                                 </Grid>
                             :   null
                     }
                     {
                         (factor)
                             ?   <Grid item xs={12} sm={6}>
-                                    <CardSubContent id={"factor"} color={"red"} value={factor} nameValue={"Factor"} />
+                                    <CardSubContent id={"factor"} color={factorColor} value={factor} nameValue={"Factor"} />
                                 </Grid>
                             :   null
                     }
                     {
                         (real)
                             ?   <Grid item xs={12} sm={6}>
-                                    <CardSubContent id={"real"} color={"yellow"} value={real} nameValue={"Real"} />
+                                    <CardSubContent id={"real"} color={realColor} value={real} nameValue={"Real"} />
                                 </Grid>
                             :   null
                     }
                     {
                         (factorRealMoney)
                             ?   <Grid item xs={12} sm={6}>
-                                    <CardSubContent id={"factorRealMoney"} color={"red"} value={factorRealMoney} nameValue={"Factor Real Incentivo"} />
+                                    <CardSubContent id={"factorRealMoney"} color={factorRealMoneyColor} value={factorRealMoney} nameValue={"Factor Real Incentivo"} />
                                 </Grid>
                             :   null
                     }
                     {
                         (advanceVsMeta)
                             ?   <Grid item xs={12} sm={6}>
-                                    <CardSubContent id={"advanceVsMeta"} color={"yellow"} value={advanceVsMeta} nameValue={"Avance VS Meta"} />
+                                    <CardSubContent id={"advanceVsMeta"} color={aVSMColor} value={advanceVsMeta} nameValue={"Avance VS Meta"} />
                                 </Grid>
                             :   null
                     }
                     {
                         (cumpProy)
                             ?   <Grid item xs={12} sm={6}>
-                                    <CardSubContent id={"cumpProy"} color={"yellow"} value={cumpProy} nameValue={"Cump Proy"} />
+                                    <CardSubContent id={"cumpProy"} color={cumpProyColor} value={cumpProy} nameValue={"Cump Proy"} />
                                 </Grid>
                             :   null
                     }
                     {
                         (factorProyMoney)
                             ?   <Grid item xs={12} sm={6}>
-                                    <CardSubContent id={"factorProyMoney"} color={"green"} value={factorProyMoney} nameValue={"Factor Proy Incentivo"} />
+                                    <CardSubContent id={"factorProyMoney"} color={factorProyMoneyColor} value={factorProyMoney} nameValue={"Factor Proy Incentivo"} />
                                 </Grid>
                             :   null
                     }

@@ -282,7 +282,7 @@ function QuickStart({ branchSelected }){
                         proyection={card.proy}
                         percentProy={card.advance_proy}
                         difference={card.dif}
-                        dailyDifference={card.daili_dif}
+                        dailyDifference={card.dayli_dif}
                         factor={card.factor} />      
                 ))}
             </GridList>
