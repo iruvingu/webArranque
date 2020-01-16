@@ -43,7 +43,7 @@ export default function SubHeader({ General }){
 
     const [noUnable, setNoUnable] = useState("No disponible")
 
-    const { title, work_days, elapsed_days, ascelerador, color_prev, color_proy, color_today, blue_green, 
+    const { tipo_sucursal, work_days, elapsed_days, ascelerador, color_prev, color_proy, color_today, blue_green, 
         orange_red, without_pay, total, risk_points } = General
     
     const classes = useStyles()
@@ -54,7 +54,7 @@ export default function SubHeader({ General }){
                 <Grid container xs={12} >
                     <Grid container xs={12} spacing={3}>
                         <Grid item xs={12} sm={6} md={3}>
-                        <Typography variant='h6'><div style={{color: "#fff"}}>FISA NM - MEDIANA</div></Typography>
+                            <Typography variant='h6'><div style={{color: "#fff"}}>{(tipo_sucursal) ? tipo_sucursal : noUnable}</div></Typography>
                         </Grid>
                         <Grid item xs={12} sm={6} md={3}>
                             <Paper className={classes.paper2}>Días Hábiles: {(work_days) ? work_days : noUnable}</Paper>
@@ -63,35 +63,87 @@ export default function SubHeader({ General }){
                             <Paper className={classes.paper2}>Días transcurridos: {(elapsed_days) ? elapsed_days : noUnable }</Paper>
                         </Grid>
                         <Grid item xs={12} sm={6} md={3}>
-                            <Paper className={classes.paper2}>ACELERADOR: {(ascelerador) ? ascelerador : noUnable}%</Paper>
+                            <Paper className={classes.paper2}>ACELERADOR: {(ascelerador) ? ascelerador : noUnable}</Paper>
                         </Grid>
                     </Grid>
                     <Grid className={classes.gridItemMargin} container xs={12} spacing={1}>
-                        <Grid item xs={6} sm={2} md={2}>
-                            <Typography><div className={classes[color_prev]}>PREVIO: {(color_prev) ? color_prev : noUnable}</div></Typography>
-                            
-                        </Grid>
-                        <Grid item xs={6} sm={2} md={2}>
-                            <Typography><div className={classes[color_today]}>ACTUAL: {(color_today) ? color_today : noUnable} </div></Typography>
-                        </Grid>
-                        <Grid item xs={6} sm={2} md={2}>
-                        <Typography><div className={classes[color_proy]}>PROYECTA: {(color_proy) ? color_proy : noUnable} </div></Typography>
-                        </Grid>
-                        <Grid item xs={6} sm={2} md={2}>
-                            <div className={classes.WHITE}>Azul-Verde: {(blue_green) ? blue_green : noUnable} </div>
-                        </Grid>
-                        <Grid item xs={6} sm={2} md={2}>
-                            <div className={classes.WHITE}>Amarillo,Naranja,Rojo: {(orange_red) ? orange_red : noUnable} </div>
-                        </Grid>
-                        <Grid item xs={6} sm={2} md={2}>
-                            <div className={classes.WHITE}>Sin Pago: {(without_pay) ? without_pay : noUnable} </div>
-                        </Grid>
-                        <Grid item xs={6} sm={2} md={2}>
-                            <div className={classes.WHITE}>Total nuevos: {(total) ? total : noUnable} </div>
-                        </Grid>
-                        <Grid item xs={6} sm={2} md={2}>
-                            <div className={classes.WHITE}>Riesgo: {(risk_points) ? risk_points : noUnable}</div>
-                        </Grid>
+                        {
+                            (color_prev) 
+                            ?   <Grid item xs={6} sm={2} md={2}>
+                                <Typography><div className={classes[color_prev]}>PREVIO: {color_prev}</div></Typography>
+                            </Grid>
+                            :   null
+                        }
+                        {
+                            (color_today)
+                            ?   <Grid item xs={6} sm={2} md={2}>
+                                    <Typography>
+                                        <div className={classes[color_today]}>ACTUAL: {(color_today)} </div>
+                                    </Typography>
+                                </Grid>
+                            :   null
+                        }
+                        
+                        {
+                            (color_proy)
+                            ?   <Grid item xs={6} sm={2} md={2}>
+                                    <Typography>
+                                        <div className={classes[color_proy]}>PROYECTA: {(color_proy)} </div>
+                                    </Typography>
+                            </Grid>
+                            :   null
+                        }
+                        
+                        {
+                            (blue_green)
+                            ?   <Grid item xs={6} sm={2} md={2}>
+                                    <Typography>
+                                        <div className={classes.WHITE}>Azul-Verde: {(blue_green) ? blue_green : noUnable} </div>  
+                                    </Typography>
+                                </Grid>
+                            :   null
+                        }
+                        
+                        {
+                            (orange_red)
+                            ?   <Grid item xs={6} sm={2} md={2}>
+                                    <Typography>
+                                        <div className={classes.WHITE}>Amarillo,Naranja,Rojo: {(orange_red)} </div>   
+                                    </Typography>
+                                </Grid>
+                            :   null
+                        }
+                        
+                        {
+                            (without_pay)
+                            ?   <Grid item xs={6} sm={2} md={2}>
+                                    <Typography>
+                                        <div className={classes.WHITE}>Sin Pago: {(without_pay)} </div>            
+                                    </Typography>
+                                </Grid>
+                            :   null
+                        }
+                        
+                        {
+                            (total)
+                            ?<Grid item xs={6} sm={2} md={2}>
+                                <Typography>
+                                    <div className={classes.WHITE}>Total nuevos: {(total) ? total : noUnable} </div> 
+                                </Typography>
+                            </Grid>
+                            :   null
+                        }
+                        
+                        {
+                            (risk_points)
+                            ?   <Grid item xs={6} sm={2} md={2}>
+                                <Typography>
+                                    <div className={classes.WHITE}>Riesgo: {(risk_points) ? risk_points : noUnable}</div>
+                                </Typography>
+                                </Grid>
+                            :   null
+                        }
+                        
                     </Grid>
                 </Grid>
             </Paper>

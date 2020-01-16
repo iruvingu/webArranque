@@ -12,16 +12,19 @@ const GraphicEPRC = ({ sucursalId, eprcChartData }) =>{
 		if(eprcChartData){
 			setValue(Object.values(eprcChartData)[0].Meta)
 		}
-	})
+    })
+    
+    const sortChartData = data => {
+		return Object.values(data).sort((a, b) => (a.Day > b.Day) ? 1 : -1)
+	}
 
     return (!eprcChartData)
     ?   null
     :
     (<ResponsiveBar
-            data={Object.values(eprcChartData)}
+            data={sortChartData(eprcChartData)}
             keys={[ 'Cierre' ]}
             indexBy="Dia"
-            maxValue={1000000}
             margin={{ top: 50, right: 10, bottom: 50, left: 70 }}
             padding={0.2}
             colors={{ scheme: 'nivo' }}

@@ -17,15 +17,18 @@ const GraphicColocation = ({ sucursalId, colocationChartData}) => {
 		}
 	})
 
+	const sortChartData = data => {
+		return Object.values(data).sort((a, b) => (a.Day > b.Day) ? 1 : -1)
+	}
+
 	return (!colocationChartData)
 	?	null
 	:
 		(
 		<ResponsiveBar
-		data={Object.values(colocationChartData)}
+		data={sortChartData(colocationChartData)}
 		keys={['monto_revolvencia', 'monto_total_nuevos', 'monto_total_renovados']}
 		indexBy="Dia"
-		maxValue={1000000}
 		margin={{ top: 50, right: 10, bottom: 50, left: 70 }}
 		padding={0.2}
 		colors={{ scheme: 'category10' }}
@@ -35,13 +38,13 @@ const GraphicColocation = ({ sucursalId, colocationChartData}) => {
 					axis: 'y',
 					value: value,
 					lineStyle: { stroke: '#191461', strokeWidth: 2 },
-					legend: `Meta Total: ${value}`,
+					legend: `Meta Total: $${value}`,
 					legendOrientation: 'horizontal',
 				},{
 					axis: 'y',
 					value: value2,
 					lineStyle: { stroke: '#191461', strokeWidth: 2 },
-					legend: `Proyección ${value2}`,
+					legend: `Proyección: $${value2}`,
 					legendOrientation: 'horizontal',
 				}
 		]}

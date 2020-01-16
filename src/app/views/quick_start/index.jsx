@@ -238,9 +238,9 @@ function QuickStart({ branchSelected }){
                                 tableHeaderColor="primary"
                                 tableHead={["Mes", "Total", "Crecimiento"]}
                                 tableData={[
-                                ["Octubre", branchSelected[0].cards.General.current_month, branchSelected[0].cards.General.current_variation],
-                                ["Noviembre", branchSelected[0].cards.General.past_month, branchSelected[0].cards.General.past_variation],
-                                ["Diciembre", branchSelected[0].cards.General.two_past_month, branchSelected[0].cards.General.two_past_variation],
+                                [branchSelected[0].cards.General.actual_month, branchSelected[0].cards.General.current_month, branchSelected[0].cards.General.current_variation],
+                                [branchSelected[0].cards.General.last_month, branchSelected[0].cards.General.past_month, branchSelected[0].cards.General.past_variation],
+                                [branchSelected[0].cards.General.two_last_month, branchSelected[0].cards.General.two_past_month, branchSelected[0].cards.General.two_past_variation],
                                 ]}
                             />
                         </TCardBody>
@@ -259,9 +259,9 @@ function QuickStart({ branchSelected }){
                                 tableHeaderColor="primary"
                                 tableHead={["Mes", "Clientes", "Variacion"]}
                                 tableData={[
-                                ["Octubre", branchSelected[0].cards.General.past_clients, branchSelected[0].cards.General.current_variation_clients],
-                                ["Noviembre",branchSelected[0].cards.General.current_clients, branchSelected[0].cards.General.past_variation_clients],
-                                ["Diciembre", branchSelected[0].cards.General.two_past_clients, branchSelected[0].cards.General.two_past_variation_clients],
+                                [branchSelected[0].cards.General.actual_month, branchSelected[0].cards.General.past_clients, branchSelected[0].cards.General.current_variation_clients],
+                                [branchSelected[0].cards.General.last_month,branchSelected[0].cards.General.current_clients, branchSelected[0].cards.General.past_variation_clients],
+                                [branchSelected[0].cards.General.two_last_month, branchSelected[0].cards.General.two_past_clients, branchSelected[0].cards.General.two_past_variation_clients],
                                 ]}
                             />
                         </TCardBody>
@@ -342,8 +342,8 @@ function QuickStart({ branchSelected }){
                                 tableHeaderColor="primary"
                                 tableHead={["Ejecutivos", "Autorizado", "Activo"]}
                                 tableData={[
-                                ["Credito", branchSelected[0].cards.Gestion.auth_cred, branchSelected[0].cards.Gestion.act_cred],
-                                ["Promocion", branchSelected[0].cards.Gestion.auth_prom, branchSelected[0].cards.Gestion.act_prom],
+                                ["Crédito", branchSelected[0].cards.Gestion.auth_cred, branchSelected[0].cards.Gestion.act_cred],
+                                ["Promoción", branchSelected[0].cards.Gestion.auth_prom, branchSelected[0].cards.Gestion.act_prom],
                                 ["Cobranza", branchSelected[0].cards.Gestion.auth_cob, branchSelected[0].cards.Gestion.act_cob],
                                 ]}
                             />
@@ -377,9 +377,9 @@ function QuickStart({ branchSelected }){
                                 tableHeaderColor="primary"
                                 tableHead={["Ejecutivos", "Findep Movil"]}
                                 tableData={[
-                                ["Promociom Activos", branchSelected[0].cards.Gestion.ejec_prom],
+                                ["Promoción Activos", branchSelected[0].cards.Gestion.ejec_prom],
                                 ["Creditos Activos", branchSelected[0].cards.Gestion.ejec_cred_act],
-                                ["Promocion", branchSelected[0].cards.Gestion.eject_act],
+                                ["Total de Ejecutivos", branchSelected[0].cards.Gestion.eject_act],
                                 ["Solicitud", branchSelected[0].cards.Gestion.sol_findep],
                                 ["Solicitudes/Promociones", branchSelected[0].cards.Gestion.pct_findep_sol_ejec],
                                 ]}

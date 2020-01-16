@@ -61,59 +61,58 @@ import { Creators } from '../../../redux/ducks/branchSelected'
 
 function Home({ subdirections, regions, branches, selectBranchOffice, branchSelected }) {
 
-		const classes = useStyles()
+	const classes = useStyles()
 
-		const [subdirectionId, setSubdirectionId] = useState('')
-		const [openSub, setOpenSub] = useState(false);
-		const [regionId, setRegionId] = useState('')
-		const [openReg, setOpenReg] = useState(false);
-		const [sucursalId, setSucursalId] = useState('')
-		const [openSuc, setOpenSuc] = useState(false);
-	
-		const subdirectionChange = event => {
-			setSubdirectionId(event.target.value);
-		};
-		const regionChange = event => {
-			setRegionId(event.target.value)
-		}
-		const sucursalChange = event => {
-			let value = event.target.value;
-			setSucursalId(value)
+	const [subdirectionId, setSubdirectionId] = useState('')
+	const [openSub, setOpenSub] = useState(false);
+	const [regionId, setRegionId] = useState('')
+	const [openReg, setOpenReg] = useState(false);
+	const [sucursalId, setSucursalId] = useState('')
+	const [openSuc, setOpenSuc] = useState(false);
 
-			if(value) {
-				let selectedBranch = branches.filter(branch => branch.id === value)
+	const subdirectionChange = event => {
+		setSubdirectionId(event.target.value);
+	};
+	const regionChange = event => {
+		setRegionId(event.target.value)
+	}
+	const sucursalChange = event => {
+		let value = event.target.value;
+		setSucursalId(value)
 
-				// select sucursal
-				selectBranchOffice(selectedBranch)
-			}
-		}
-		const handleOpen = number => {
-			switch(number) {
-				case 1:
-					setOpenSub(true)
-					break;
-				case 2:
-					setOpenReg(true)
-					break;
-				case 3:
-					setOpenSuc(true)
-					break;
-			}
-		}
-		const handleClose = number => {
-			switch(number) {
-				case 1:
-					setOpenSub(false)
-					break;
-				case 2:
-					setOpenReg(false)
-					break;
-				case 3:
-					setOpenSuc(false)
-					break;
-			}
-		}
+		if(value) {
+			let selectedBranch = branches.filter(branch => branch.id === value)
 
+			// select sucursal
+			selectBranchOffice(selectedBranch)
+		}
+	}
+	const handleOpen = number => {
+		switch(number) {
+			case 1:
+				setOpenSub(true)
+				break;
+			case 2:
+				setOpenReg(true)
+				break;
+			case 3:
+				setOpenSuc(true)
+				break;
+		}
+	}
+	const handleClose = number => {
+		switch(number) {
+			case 1:
+				setOpenSub(false)
+				break;
+			case 2:
+				setOpenReg(false)
+				break;
+			case 3:
+				setOpenSuc(false)
+				break;
+		}
+	}
 
 	return(
 		<div className={classes.root}>
@@ -154,7 +153,7 @@ function Home({ subdirections, regions, branches, selectBranchOffice, branchSele
 							?	<Grid item xs={12} sm={6} md={4}>
 									<div className={classes.formRoot}>
 										<FormControl variant='filled' className={classes.formControl}>
-										<InputLabel id="sucursalId"><div className={classes.backG}>Región</div></InputLabel>
+										<InputLabel id="sucursalId"><div className={classes.backG}>Zona</div></InputLabel>
 											<Select
 											labelId="sucursal"
 											id="open-select-sucursal"
@@ -225,7 +224,7 @@ function Home({ subdirections, regions, branches, selectBranchOffice, branchSele
 							<div className={classes.charts}>
 								<GraphicEPRC sucursalId={branchSelected[0].id} />
 							</div>
-							<div className={classes.subtitleDiv}>Colocacion</div>
+							<div className={classes.subtitleDiv}>Colocación</div>
 							<div className={classes.charts}>
 								<GraphicColocation sucursalId={branchSelected[0].id} />
 							</div>
