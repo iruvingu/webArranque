@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "arranque-imparable"
+    "default": "arranque-imparable",
+    "desarrollo-qa": "desarrollo-ci"
   }
 }
