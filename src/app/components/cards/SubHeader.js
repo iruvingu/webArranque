@@ -69,14 +69,14 @@ export default function SubHeader({ General }){
                     <Grid className={classes.gridItemMargin} container xs={12} spacing={1}>
                         {
                             (color_prev) 
-                            ?   <Grid item xs={6} sm={2} md={2}>
+                            ?   <Grid item xs={6} sm={3} md={3}>
                                 <Typography><div className={classes[color_prev]}>PREVIO: {color_prev}</div></Typography>
                             </Grid>
                             :   null
                         }
                         {
                             (color_today)
-                            ?   <Grid item xs={6} sm={2} md={2}>
+                            ?   <Grid item xs={6} sm={3} md={3}>
                                     <Typography>
                                         <div className={classes[color_today]}>ACTUAL: {(color_today)} </div>
                                     </Typography>
@@ -86,7 +86,7 @@ export default function SubHeader({ General }){
                         
                         {
                             (color_proy)
-                            ?   <Grid item xs={6} sm={2} md={2}>
+                            ?   <Grid item xs={6} sm={3} md={3}>
                                     <Typography>
                                         <div className={classes[color_proy]}>PROYECTA: {(color_proy)} </div>
                                     </Typography>
@@ -96,7 +96,7 @@ export default function SubHeader({ General }){
                         
                         {
                             (blue_green)
-                            ?   <Grid item xs={6} sm={2} md={2}>
+                            ?   <Grid item xs={6} sm={3} md={3}>
                                     <Typography>
                                         <div className={classes.WHITE}>Azul-Verde: {(blue_green) ? blue_green : noUnable} </div>  
                                     </Typography>
@@ -106,7 +106,7 @@ export default function SubHeader({ General }){
                         
                         {
                             (orange_red)
-                            ?   <Grid item xs={6} sm={2} md={2}>
+                            ?   <Grid item xs={6} sm={3} md={3}>
                                     <Typography>
                                         <div className={classes.WHITE}>Amarillo,Naranja,Rojo: {(orange_red)} </div>   
                                     </Typography>
@@ -116,7 +116,7 @@ export default function SubHeader({ General }){
                         
                         {
                             (without_pay)
-                            ?   <Grid item xs={6} sm={2} md={2}>
+                            ?   <Grid item xs={6} sm={3} md={3}>
                                     <Typography>
                                         <div className={classes.WHITE}>Sin Pago: {(without_pay)} </div>            
                                     </Typography>
@@ -126,7 +126,7 @@ export default function SubHeader({ General }){
                         
                         {
                             (total)
-                            ?<Grid item xs={6} sm={2} md={2}>
+                            ?<Grid item xs={6} sm={3} md={3}>
                                 <Typography>
                                     <div className={classes.WHITE}>Total nuevos: {(total) ? total : noUnable} </div> 
                                 </Typography>
@@ -136,7 +136,7 @@ export default function SubHeader({ General }){
                         
                         {
                             (risk_points)
-                            ?   <Grid item xs={6} sm={2} md={2}>
+                            ?   <Grid item xs={6} sm={3} md={3}>
                                 <Typography>
                                     <div className={classes.WHITE}>Riesgo: {(risk_points) ? risk_points : noUnable}</div>
                                 </Typography>
