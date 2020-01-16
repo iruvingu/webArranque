@@ -34,7 +34,7 @@ const GraphicEPRC = ({ sucursalId, eprcChartData }) =>{
                     axis: 'y',
                     value: value,
                     lineStyle: { stroke: '#191461', strokeWidth: 2 },
-                    legend: 'META',
+                    legend: `Meta: $${value}`,
                     legendOrientation: 'vertical',
                 }
             ]}
