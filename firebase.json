@@ -5,6 +5,16 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ]
+    ],
+    "redirects": [ {
+      "source": "/admin/home",
+      "destination": "/admin/",
+      "type": 304
+    }, {
+      "source": "/admin/arranque-rapido",
+      "destination": "/admin/",
+      "type": 304
+    } ]
+
   }
 }
