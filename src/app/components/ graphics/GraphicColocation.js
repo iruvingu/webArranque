@@ -35,13 +35,13 @@ const GraphicColocation = ({ sucursalId, colocationChartData}) => {
 					axis: 'y',
 					value: value,
 					lineStyle: { stroke: '#191461', strokeWidth: 2 },
-					legend: 'Meta Monto Total',
+					legend: `Meta Total: ${value}`,
 					legendOrientation: 'horizontal',
 				},{
 					axis: 'y',
 					value: value2,
 					lineStyle: { stroke: '#191461', strokeWidth: 2 },
-					legend: 'Meta Dia',
+					legend: `Proyección ${value2}`,
 					legendOrientation: 'horizontal',
 				}
 		]}

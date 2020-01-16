@@ -81,7 +81,7 @@ export default function SubHeader({ General }){
                             <div className={classes.WHITE}>Azul-Verde: {(blue_green) ? blue_green : noUnable} </div>
                         </Grid>
                         <Grid item xs={6} sm={2} md={2}>
-                            <div className={classes.WHITE}>Amarillo,Verde,Rojo: {(orange_red) ? orange_red : noUnable} </div>
+                            <div className={classes.WHITE}>Amarillo,Naranja,Rojo: {(orange_red) ? orange_red : noUnable} </div>
                         </Grid>
                         <Grid item xs={6} sm={2} md={2}>
                             <div className={classes.WHITE}>Sin Pago: {(without_pay) ? without_pay : noUnable} </div>

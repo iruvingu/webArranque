@@ -198,7 +198,7 @@ function QuickStart({ branchSelected }){
         ?   <div className={classes.spinner}><Spinner /></div>
     :   <div className={classes.root}>
         <HeaderInfoManager branchName={branchSelected[0].Info.nombreSucursal}
-            managerName={branchSelected[0].Info.encargadoSucursal}
+            managerName={branchSelected[0].General.gerente}
             timeDue={branchSelected[0].cards.General.antiguedadEmpresa} />
         <SubHeader General={branchSelected[0].cards.General} />
 
