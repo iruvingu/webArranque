@@ -63,7 +63,7 @@ export default function SubHeader({ General }){
                             <Paper className={classes.paper2}>Días transcurridos: {(elapsed_days) ? elapsed_days : noUnable }</Paper>
                         </Grid>
                         <Grid item xs={12} sm={6} md={3}>
-                            <Paper className={classes.paper2}>% ACELERADOR: {(ascelerador) ? ascelerador : noUnable}%</Paper>
+                            <Paper className={classes.paper2}>ACELERADOR: {(ascelerador) ? ascelerador : noUnable}%</Paper>
                         </Grid>
                     </Grid>
                     <Grid className={classes.gridItemMargin} container xs={12} spacing={1}>

@@ -25,7 +25,6 @@ const GraphicColocation = ({ sucursalId, colocationChartData}) => {
 		data={Object.values(colocationChartData)}
 		keys={['monto_revolvencia', 'monto_total_nuevos', 'monto_total_renovados']}
 		indexBy="Dia"
-		groupMode="grouped"
 		maxValue={1000000}
 		margin={{ top: 50, right: 10, bottom: 50, left: 70 }}
 		padding={0.2}
