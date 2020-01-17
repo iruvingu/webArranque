@@ -1,4 +1,5 @@
 import React from 'react';
+import { firestoreConnect } from 'react-redux-firebase'
 import { Switch, Route, Redirect } from "react-router-dom";
 // creates a beautiful scrollbar
 import PerfectScrollbar from "perfect-scrollbar";
@@ -68,9 +69,11 @@ const switchRoutes = (
     </Switch>
   );
 
-function Admin({ ...rest }) {
+function Admin(props, { ...rest }) {
 
     const classes = useStyles();
+
+    console.log(props.firestore)
 
     // ref to help us initialize PerfectScrollbar on windows devices
     const mainPanel = React.createRef();
@@ -131,4 +134,4 @@ function Admin({ ...rest }) {
     )
 }
 
-export default Admin
+export default firestoreConnect()(Admin)

@@ -38,7 +38,7 @@ const GraphicColocation = ({ sucursalId, colocationChartData}) => {
 					axis: 'y',
 					value: value,
 					lineStyle: { stroke: '#191461', strokeWidth: 2 },
-					legend: `Colocación prom.: $${value}`,
+					legend: `Colocación prom: $${value}`,
 					legendOrientation: 'horizontal',
 				},{
 					axis: 'y',

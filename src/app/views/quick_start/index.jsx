@@ -210,12 +210,12 @@ function QuickStart({ branchSelected }){
             <div className={classes.specialCard}>
             <TCard>
                 <TCardHeader color="primary">
-                    <h4 className={classes.cardTitleWhite} >INDICADORES</h4>
+                    <h4 className={classes.cardTitleWhite} >AVANCE</h4>
                 </TCardHeader>
                 <TCardBody>
                     <Table
                         tableHeaderColor="primary"
-                        tableHead={["Indicador", "Real", "Proyección", "Rank Nal."]}
+                        tableHead={["Indicador", "Actual", "Proyección", "Rank Nal."]}
                         tableData={[
                         ["Colocación Total", branchSelected[0].cards.General.col_total_real, branchSelected[0].cards.General.col_total_proy, branchSelected[0].cards.General.total_rank],
                         ["Nuevos", branchSelected[0].cards.General.new_real, branchSelected[0].cards.General.new_proy, branchSelected[0].cards.General.new_rank],
@@ -276,6 +276,7 @@ function QuickStart({ branchSelected }){
             Banner
         </div>
         <div className={classes.singleLineGrid}>
+            {/* TODO: MIN FACTOR INTO BANNER */}
             <GridList className={classes.gridList} cols={2.5}>
                 {Object.values(branchSelected[0].cards.Banner).map((card, index) => (
                         <QuickStartCard
@@ -283,10 +284,14 @@ function QuickStart({ branchSelected }){
                         title={Object.keys(branchSelected[0].cards.Banner)[index]}
                         meta={card.goal}
                         proyection={card.proy}
+                        proyColor={card.proy_color}
                         percentProy={card.advance_proy}
+                        perProyColor={card.advance_proy_color}
                         difference={card.dif}
-                        dailyDifference={card.dayli_dif}
-                        factor={card.factor} />      
+                        difColor={card.dif_color}
+                        /* dailyDifference={card.dayli_dif} */
+                        factor={card.factor}
+                        factorColor={card.factor_color} />      
                 ))}
             </GridList>
         </div>
@@ -302,9 +307,14 @@ function QuickStart({ branchSelected }){
                         title={Object.keys(branchSelected[0].cards.Colocacion)[index]}
                         meta={card.goal}
                         proyection={card.proy}
+                        proyColor={card.proy_color}
                         percentProy={card.advance_proy}
+                        perProyColor={card.advance_proy_color}
                         real={card.real}
-                        factorRealMoney={card.factor} />      
+                        realColor={card.real_color}
+                        factorRealMoney={card.factor}
+                        factorRealMoneyColor={card.factor_color}
+                         />      
                 ))}
                 </GridList>
             </div>
@@ -321,10 +331,15 @@ function QuickStart({ branchSelected }){
                         title={Object.keys(branchSelected[0].cards.Cobranza)[index]}
                         meta={card.goal}
                         proyection={card.proy}
+                        proyColor={card.proy_color}
                         cumpProy={card.advance_proy}
+                        cumpProyColor={card.advance_proy_color}
                         advanceVsMeta={card.advance}
+                        aVSMColor={card.advance_color}
                         real={card.real}
-                        factorProyMoney={card.factor} />      
+                        realColor={card.real_color}
+                        factorProyMoney={card.factor}
+                        factorProyMoneyColor={card.factor_color} />      
                 ))}
                 </GridList>
             </div>
@@ -378,8 +393,7 @@ function QuickStart({ branchSelected }){
                                 tableHead={["Ejecutivos", "Findep Movil"]}
                                 tableData={[
                                 ["Promoción Activos", branchSelected[0].cards.Gestion.ejec_prom],
-                                ["Creditos Activos", branchSelected[0].cards.Gestion.ejec_cred_act],
-                                ["Total de Ejecutivos", branchSelected[0].cards.Gestion.eject_act],
+                                /* ["Total de Ejecutivos", branchSelected[0].cards.Gestion.eject_act], */
                                 ["Solicitud", branchSelected[0].cards.Gestion.sol_findep],
                                 ["Solicitudes/Promociones", branchSelected[0].cards.Gestion.pct_findep_sol_ejec],
                                 ]}

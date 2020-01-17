@@ -35,7 +35,7 @@ const GraphicEPRC = ({ sucursalId, eprcChartData }) =>{
                     value: value,
                     lineStyle: { stroke: '#191461', strokeWidth: 2 },
                     legend: `Meta: $${value}`,
-                    legendOrientation: 'vertical',
+                    legendOrientation: 'horizontal',
                 }
             ]}
             defs={[

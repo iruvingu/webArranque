@@ -63,7 +63,7 @@ const grayColor = [
   "#eee",
   "#e7e7e7"
 ];
-const primaryColor = ["#100B47", "#331391", "#101426", "#381D91"];
+const primaryColor = ["#100B47", "#331391", "#101426", "#253457"];
 const warningColor = ["#ff9800", "#ffa726", "#fb8c00", "#ffa21a"];
 const dangerColor = ["#f44336", "#ef5350", "#e53935", "#f55a4e"];
 const successColor = ["#4caf50", "#66bb6a", "#43a047", "#5cb860"];
@@ -174,11 +174,16 @@ const infoCardHeader = {
     "linear-gradient(60deg, " + infoColor[1] + ", " + infoColor[2] + ")",
   ...infoBoxShadow
 };
-const primaryCardHeader = {
+const primaryCardHeaderGradient = {
   background:
     "linear-gradient(60deg, " + primaryColor[1] + ", " + primaryColor[2] + ")",
   ...primaryBoxShadow
 };
+const primaryCardHeader = {
+  background:
+    primaryColor[3],
+    ...primaryBoxShadow
+}
 
 const cardActions = {
   margin: "0 20px 10px",
